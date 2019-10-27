@@ -5,6 +5,7 @@
  */
 package obligatorio2;
 
+import obligatorio2.model.Sistema;
 import obligatorio2.view.AltaEstudiante;
 
 /**
@@ -14,8 +15,8 @@ import obligatorio2.view.AltaEstudiante;
 public class Principal {
     
     public static void main(String[] args){
-        
-        AltaEstudiante altaEstudiante = new AltaEstudiante();
+        Sistema s = new Sistema();
+        AltaEstudiante altaEstudiante = new AltaEstudiante(s);
         altaEstudiante.setVisible(true);
     }
     
