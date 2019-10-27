@@ -5,6 +5,7 @@
  */
 package obligatorio2.view;
 import javax.swing.*;
+import obligatorio2.model.Sistema;
 
 /**
  *
@@ -15,7 +16,7 @@ public class ModificacionEstudiante extends javax.swing.JFrame {
     /**
      * Creates new form ModificacionEstudiante
      */
-    public ModificacionEstudiante() {
+    public ModificacionEstudiante(Sistema s) {
         initComponents();
     }
 

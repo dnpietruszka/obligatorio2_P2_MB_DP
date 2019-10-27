@@ -6,7 +6,7 @@
 package obligatorio2;
 
 import obligatorio2.model.Sistema;
-import obligatorio2.view.AltaEstudiante;
+import obligatorio2.view.MenuPrincipal;
 
 /**
  *
@@ -16,8 +16,8 @@ public class Principal {
     
     public static void main(String[] args){
         Sistema s = new Sistema();
-        AltaEstudiante altaEstudiante = new AltaEstudiante(s);
-        altaEstudiante.setVisible(true);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(s);
+        menuPrincipal.setVisible(true);
     }
     
 }
