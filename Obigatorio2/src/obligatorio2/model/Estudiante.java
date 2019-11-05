@@ -9,28 +9,18 @@ package obligatorio2.model;
  *
  * @author diego
  */
-public class Estudiante {
+public class Estudiante extends Persona {
     
-    private String nombre;
-    private long CI;
     private String mail;
     private int numero;
     private int semestre;
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public long getCI() {
-        return CI;
-    }
-
-    public void setCI(long CI) {
-        this.CI = CI;
+    
+    
+    public Estudiante(String nombre, String cedula, String mail, int numero, int semestre){
+        super(nombre, cedula);
+        this.mail = mail;
+        this.numero = numero;
+        this.semestre = semestre;
     }
 
     public String getMail() {
@@ -59,7 +49,7 @@ public class Estudiante {
     
     @Override
     public boolean equals(Object e){
-        return this.CI == ((Estudiante)e).getCI();
+        return this.getCedula().equals(((Estudiante)e).getCedula());
     }
     
 }
