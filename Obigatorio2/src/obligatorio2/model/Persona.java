@@ -13,10 +13,12 @@ public abstract class Persona {
     
     private String nombre;
     private String cedula;
+    private String mail;
     
-    public Persona(String nombre, String cedula){
+    public Persona(String nombre, String cedula, String mail){
         this.nombre = nombre;
         this.cedula = cedula;
+        this.mail = mail;
     }
 
     public String getNombre() {
@@ -33,6 +35,14 @@ public abstract class Persona {
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
+    }
+    
+    public String getMail(){
+        return mail;
+    }
+    
+    public void setMail(String mail){
+        this.mail = mail;
     }
     
 }

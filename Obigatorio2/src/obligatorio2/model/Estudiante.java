@@ -11,25 +11,16 @@ package obligatorio2.model;
  */
 public class Estudiante extends Persona {
     
-    private String mail;
     private int numero;
     private int semestre;
     
     
     public Estudiante(String nombre, String cedula, String mail, int numero, int semestre){
-        super(nombre, cedula);
-        this.mail = mail;
+        super(nombre, cedula, mail);
         this.numero = numero;
         this.semestre = semestre;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
 
     public int getNumero() {
         return numero;

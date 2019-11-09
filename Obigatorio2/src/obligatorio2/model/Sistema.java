@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class Sistema {
     
     private ArrayList<Estudiante> listaEstudiantes;
+    private ArrayList<Docente> listaDocentes;
     
     public Sistema(){
     
         listaEstudiantes = new ArrayList<Estudiante>();
+        listaDocentes = new ArrayList<Docente>();
     
     }
 
@@ -33,4 +35,15 @@ public class Sistema {
         listaEstudiantes.remove(e);
     }
     
+    public ArrayList<Docente> getListaDocentes() {
+        return listaDocentes;
+    }
+    
+    public void agregarDocente(Docente d){
+        listaDocentes.add(d);
+    }
+    
+    public void eliminarDocente(Docente d){
+        listaDocentes.remove(d);
+    }
 }
