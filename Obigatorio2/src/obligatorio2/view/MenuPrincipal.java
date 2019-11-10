@@ -7,17 +7,22 @@ package obligatorio2.view;
 
 import obligatorio2.model.Sistema;
 
+
+
 /**
  *
  * @author diego
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+    
+    private Sistema sistema;
 
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal(Sistema s) {
         initComponents();
+        sistema = s;
     }
 
     /**
@@ -77,7 +82,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        AltaEstudiante altaEstudiante = new AltaEstudiante(sistema);
+        altaEstudiante.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

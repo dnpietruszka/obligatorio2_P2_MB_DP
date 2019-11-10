@@ -5,18 +5,22 @@
  */
 package obligatorio2.view;
 import javax.swing.*;
+import obligatorio2.model.Estudiante;
 import obligatorio2.model.Sistema;
 /**
  *
  * @author diego
  */
 public class AltaEstudiante extends javax.swing.JFrame {
+    
+    private Sistema sistema;
 
     /**
      * Creates new form RegistroEstudiante
      */
-    public AltaEstudiante(Sistema modelo) {
+    public AltaEstudiante(Sistema s) {
         initComponents();
+        sistema = s;
     }
 
     /**
@@ -59,6 +63,11 @@ public class AltaEstudiante extends javax.swing.JFrame {
         lblSemestre.setText("Semestre");
 
         txtEnviar.setText("Enviar");
+        txtEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnviarActionPerformed(evt);
+            }
+        });
 
         txtLimpiar.setText("Limpiar");
 
@@ -186,6 +195,18 @@ public class AltaEstudiante extends javax.swing.JFrame {
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnviarActionPerformed
+        String nombre = txtNombre.getText();
+        String cedula = txtCI.getText();
+        String mail = txtMail.getText();
+        int numero = Integer.parseInt(txtNumero.getText());
+        int semestre = Integer.parseInt(txtSemestre.getText());
+        Estudiante e = new Estudiante(nombre, cedula, mail, numero, semestre);
+        e.getCedula();
+        sistema.agregarEstudiante(e);
+        JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_txtEnviarActionPerformed
 
     /**
      * @param args the command line arguments
