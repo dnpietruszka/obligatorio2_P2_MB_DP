@@ -27,6 +27,7 @@ public class AltaEquipo extends javax.swing.JFrame {
         initComponents();
         sistema = s;
         this.cargarEstudiantes();
+        this.cargarEquipos();
         lstEquipo.setModel(modeloEquipo);
         lstEquipos.setModel(modeloEquipos);
     }
@@ -38,6 +39,16 @@ public class AltaEquipo extends javax.swing.JFrame {
                 modeloEstudiante.addElement(listaEstudiantes.get(i));
             }
             lstEstudiantes.setModel(modeloEstudiante);
+        }
+    }
+    
+    private void cargarEquipos(){
+        ArrayList<Equipo> listaEquipos = sistema.getListaEquipos();
+        if (listaEquipos.size() > 0){
+            for (int i = 0; i < listaEquipos.size(); i++){
+                modeloEquipos.addElement(listaEquipos.get(i));
+            }
+            lstEquipos.setModel(modeloEquipos);
         }
     }
 
@@ -199,8 +210,11 @@ public class AltaEquipo extends javax.swing.JFrame {
                 estudiantesEquipo.add((Estudiante)o);
             }
             int numeroEquipo = sistema.getSiguienteNumeroEquipo();
-            Equipo e = new Equipo("Equipo - " + numeroEquipo, numeroEquipo,estudiantesEquipo);
+            Equipo e = new Equipo("Equipo " + numeroEquipo, numeroEquipo,estudiantesEquipo);
             modeloEquipos.addElement(e);
+            modeloEquipo.clear();
+            sistema.agregarEquipo(e);
+            sistema.serializar();
             JOptionPane.showMessageDialog(this, "Equipo ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Los equipos deben contener 3 estudiantes", "ATENCION", JOptionPane.WARNING_MESSAGE);

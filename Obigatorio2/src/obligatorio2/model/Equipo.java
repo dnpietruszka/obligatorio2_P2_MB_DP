@@ -50,6 +50,18 @@ public class Equipo implements Comparable<Equipo>, Serializable {
     
     @Override
     public String toString(){
-        return this.getNombre();
+        String retorno = this.getNombre();
+        retorno+=" (";
+        boolean esPrimero = true;
+        for (int i = 0; i < this.listaEstudiantes.size(); i++){
+            if (esPrimero){
+                retorno+=this.listaEstudiantes.get(i).getNombre();
+            } else {
+                retorno+= ", " + this.listaEstudiantes.get(i).getNombre();
+            }
+            esPrimero = false;
+        }
+        retorno+=")";
+        return retorno;
     }
 }
