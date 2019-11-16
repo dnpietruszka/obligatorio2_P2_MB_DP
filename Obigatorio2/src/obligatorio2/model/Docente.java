@@ -5,11 +5,13 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author matias
  */
-public class Docente extends Persona {
+public class Docente extends Persona implements Serializable {
     private int anioIngreso;
     
     public Docente (String nombre, String cedula, String mail, int añoIngreso){

@@ -49,8 +49,6 @@ public class AltaDocente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstDocente = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         lblNombreDocente.setText("Nombre");
 
         lblCIDocente.setText("CI");
@@ -185,6 +183,7 @@ public class AltaDocente extends javax.swing.JFrame {
         Docente d = new Docente(nombre, cedula, mail, anioIngreso);
         d.getCedula();
         sistema.agregarDocente(d);
+        sistema.serializar();
         JOptionPane.showMessageDialog(this, "Docente ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEnviarDocenteActionPerformed
 

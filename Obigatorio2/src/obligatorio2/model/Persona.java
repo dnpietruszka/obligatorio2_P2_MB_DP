@@ -5,11 +5,13 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author diego
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     
     private String nombre;
     private String cedula;

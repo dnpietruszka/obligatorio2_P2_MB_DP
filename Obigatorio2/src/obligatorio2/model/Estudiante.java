@@ -5,11 +5,13 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author diego
  */
-public class Estudiante extends Persona {
+public class Estudiante extends Persona implements Serializable {
     
     private int numero;
     private int semestre;
@@ -50,6 +52,11 @@ public class Estudiante extends Persona {
     @Override
     public boolean equals(Object e){
         return this.getCedula().equals(((Estudiante)e).getCedula());
+    }
+    
+    @Override
+    public String toString(){
+        return this.getNombre();
     }
     
 }

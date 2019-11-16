@@ -21,19 +21,18 @@ public class Principal {
     public static void main(String[] args){
         Sistema s;
         try {
-                FileInputStream fileIn = new FileInputStream("sistema");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                s = (Sistema) in.readObject();
-                System.out.println("Serialized data is read from /tmp/item.ser");
-                System.out.println("After Deserialization" + s);
+            FileInputStream fileIn = new FileInputStream("sistema");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            s = (Sistema) in.readObject();
+            System.out.println("After Deserialization" + s);
         } catch (FileNotFoundException e) {
-                s = new Sistema();
+            s = new Sistema();
         } catch (IOException e) {
-               e.printStackTrace();
+            System.out.println(e.getMessage());
+            s = new Sistema();
         } catch (ClassNotFoundException e) {
-               e.printStackTrace();
+            s = new Sistema();
         }
-        s = new Sistema();
         MenuPrincipal menuPrincipal = new MenuPrincipal(s);
         menuPrincipal.setVisible(true);
     }

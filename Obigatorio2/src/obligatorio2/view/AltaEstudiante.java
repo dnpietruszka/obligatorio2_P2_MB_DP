@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package obligatorio2.view;
+import java.util.ArrayList;
 import javax.swing.*;
 import obligatorio2.model.Estudiante;
 import obligatorio2.model.Sistema;
@@ -21,6 +22,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
     public AltaEstudiante(Sistema s) {
         initComponents();
         sistema = s;
+        this.cargarEstudiantes();
     }
 
     /**
@@ -47,10 +49,8 @@ public class AltaEstudiante extends javax.swing.JFrame {
         txtSemestre = new javax.swing.JTextField();
         pnlListaEstudiante = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lstEstudiante = new javax.swing.JList<>();
+        lstEstudiantes = new javax.swing.JList<>();
         txtTitulo = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblNombre.setText("Nombre");
 
@@ -135,28 +135,23 @@ public class AltaEstudiante extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lstEstudiante.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lstEstudiante);
+        jScrollPane1.setViewportView(lstEstudiantes);
 
         javax.swing.GroupLayout pnlListaEstudianteLayout = new javax.swing.GroupLayout(pnlListaEstudiante);
         pnlListaEstudiante.setLayout(pnlListaEstudianteLayout);
         pnlListaEstudianteLayout.setHorizontalGroup(
             pnlListaEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListaEstudianteLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListaEstudianteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlListaEstudianteLayout.setVerticalGroup(
             pnlListaEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlListaEstudianteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         txtTitulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -192,6 +187,17 @@ public class AltaEstudiante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cargarEstudiantes(){
+        ArrayList<Estudiante> listaEstudiantes = sistema.getListaEstudiantes();
+        
+        if (listaEstudiantes.size() > 0){
+            for (int i = 0; i < listaEstudiantes.size(); i++){
+                defaultListModel.addElement(listaEstudiantes.get(i));
+            }
+            lstEstudiantes.setModel(defaultListModel);
+        }
+    }
+    
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -205,13 +211,14 @@ public class AltaEstudiante extends javax.swing.JFrame {
         Estudiante e = new Estudiante(nombre, cedula, mail, numero, semestre);
         e.getCedula();
         sistema.agregarEstudiante(e);
+        sistema.serializar();
         JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_txtEnviarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
+    DefaultListModel defaultListModel = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCI;
@@ -219,7 +226,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSemestre;
-    private javax.swing.JList<String> lstEstudiante;
+    private javax.swing.JList<String> lstEstudiantes;
     private javax.swing.JPanel pnlListaEstudiante;
     private javax.swing.JPanel pnlRegistroEstudiante;
     private javax.swing.JTextField txtCI;
