@@ -56,7 +56,7 @@ public class Estudiante extends Persona implements Serializable {
     
     @Override
     public String toString(){
-        return this.getNombre();
+        return this.getNombre() + " - " + this.getNumero();
     }
     
 }

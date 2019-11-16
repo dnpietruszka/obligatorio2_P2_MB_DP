@@ -108,11 +108,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnAltaDocenteActionPerformed
 
     private void mnAltaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAltaEquipoActionPerformed
-        if (sistema.getListaEstudiantes().size() > 0){
+        if (sistema.getListaEstudiantes().size() > 2){
             AltaEquipo altaEquipo = new AltaEquipo(sistema);
             altaEquipo.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "No hay estudiantes registrados en el sistema, por favor, registre estudiantes y vuelva a intentar", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Deben existir al menos 3 estudiantes registrados para registrar equipos", "ATENCION", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_mnAltaEquipoActionPerformed
 

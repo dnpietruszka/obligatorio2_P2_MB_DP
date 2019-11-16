@@ -25,6 +25,8 @@ public class AltaEquipo extends javax.swing.JFrame {
         initComponents();
         sistema = s;
         this.cargarEstudiantes();
+        lstEquipo.setModel(modeloEquipo);
+        lstEquipos.setModel(modeloEquipos);
     }
     
     private void cargarEstudiantes(){
@@ -63,10 +65,20 @@ public class AltaEquipo extends javax.swing.JFrame {
         jScrollPane3.setViewportView(lstEquipo);
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnCrearEquipo.setText("Crear");
 
         btnEliminarEstudianteLista.setText("Eliminar");
+        btnEliminarEstudianteLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEstudianteListaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEstudiantesLayout = new javax.swing.GroupLayout(pnlEstudiantes);
         pnlEstudiantes.setLayout(pnlEstudiantesLayout);
@@ -144,7 +156,21 @@ public class AltaEquipo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        Object e = lstEstudiantes.getSelectedValue();
+        modeloEquipo.addElement(e);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarEstudianteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteListaActionPerformed
+        int index = lstEquipo.getSelectedIndex();
+        if (index != -1) {
+            modeloEquipo.remove(index);
+        }    
+    }//GEN-LAST:event_btnEliminarEstudianteListaActionPerformed
+
     DefaultListModel modeloEstudiante = new DefaultListModel();
+    DefaultListModel modeloEquipo = new DefaultListModel();
+    DefaultListModel modeloEquipos = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCrearEquipo;
