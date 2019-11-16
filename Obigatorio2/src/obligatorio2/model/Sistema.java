@@ -5,13 +5,14 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author diego
  */
-public class Sistema {
+public class Sistema implements Serializable  {
     
     private ArrayList<Estudiante> listaEstudiantes;
     private ArrayList<Docente> listaDocentes;

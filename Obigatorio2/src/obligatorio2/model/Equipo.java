@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class Equipo {
     private String nombre;
-    private ArrayList<Estudiante> estudiantes;
+    private ArrayList<Estudiante> listaEstudiantes;
     
     public Equipo(String nombre){
         this.nombre = nombre;
-        this.estudiantes = new ArrayList<Estudiante>();
+        this.listaEstudiantes = new ArrayList<Estudiante>();
     }
     
     public String getNombre(){
@@ -28,6 +28,10 @@ public class Equipo {
     }
     
     public ArrayList<Estudiante> getEstudiantes(){
-        return estudiantes;
+        return this.listaEstudiantes;
+    }
+    
+    public void agregarEstudiante(Estudiante e){
+        listaEstudiantes.add(e);
     }
 }

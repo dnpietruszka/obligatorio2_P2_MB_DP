@@ -13,6 +13,7 @@ public class Estudiante extends Persona {
     
     private int numero;
     private int semestre;
+    private Equipo equipo;
     
     
     public Estudiante(String nombre, String cedula, String mail, int numero, int semestre){
@@ -36,6 +37,14 @@ public class Estudiante extends Persona {
 
     public void setSemestre(int semestre) {
         this.semestre = semestre;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
     
     @Override
