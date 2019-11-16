@@ -26,4 +26,9 @@ public class Docente extends Persona implements Serializable {
     public void setAñoIngreso(int añoIngreso){
         this.anioIngreso = añoIngreso;
     }
+    
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
 }

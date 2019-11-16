@@ -70,6 +70,11 @@ public class AltaEstudiante extends javax.swing.JFrame {
         });
 
         txtLimpiar.setText("Limpiar");
+        txtLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLimpiarActionPerformed(evt);
+            }
+        });
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,10 +197,18 @@ public class AltaEstudiante extends javax.swing.JFrame {
         
         if (listaEstudiantes.size() > 0){
             for (int i = 0; i < listaEstudiantes.size(); i++){
-                defaultListModel.addElement(listaEstudiantes.get(i));
+                modeloEstudiante.addElement(listaEstudiantes.get(i));
             }
-            lstEstudiantes.setModel(defaultListModel);
+            lstEstudiantes.setModel(modeloEstudiante);
         }
+    }
+    
+    private void limpiarCampos(){
+        txtNombre.setText("");
+        txtCI.setText("");
+        txtMail.setText("");
+        txtNumero.setText("");
+        txtSemestre.setText("");
     }
     
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -209,17 +222,21 @@ public class AltaEstudiante extends javax.swing.JFrame {
         int numero = Integer.parseInt(txtNumero.getText());
         int semestre = Integer.parseInt(txtSemestre.getText());
         Estudiante e = new Estudiante(nombre, cedula, mail, numero, semestre);
-        e.getCedula();
         sistema.agregarEstudiante(e);
         sistema.serializar();
-        defaultListModel.addElement(e);
+        modeloEstudiante.addElement(e);
         JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        this.limpiarCampos();
     }//GEN-LAST:event_txtEnviarActionPerformed
+
+    private void txtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarActionPerformed
+        this.limpiarCampos();
+    }//GEN-LAST:event_txtLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    DefaultListModel defaultListModel = new DefaultListModel();
+    DefaultListModel modeloEstudiante = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCI;

@@ -5,6 +5,8 @@
  */
 package obligatorio2.view;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import obligatorio2.model.Docente;
 import obligatorio2.model.Sistema;
@@ -23,6 +25,7 @@ public class AltaDocente extends javax.swing.JFrame {
     public AltaDocente(Sistema s) {
         initComponents();
         sistema = s;
+        this.cargarDocentes();
     }
 
     /**
@@ -71,6 +74,11 @@ public class AltaDocente extends javax.swing.JFrame {
         });
 
         btnLimpiarDocente.setText("Limpiar");
+        btnLimpiarDocente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarDocenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlRegistroDocenteLayout = new javax.swing.GroupLayout(pnlRegistroDocente);
         pnlRegistroDocente.setLayout(pnlRegistroDocenteLayout);
@@ -123,11 +131,6 @@ public class AltaDocente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lstDocente.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstDocente);
 
         javax.swing.GroupLayout pnlListaDocenteLayout = new javax.swing.GroupLayout(pnlListaDocente);
@@ -175,19 +178,42 @@ public class AltaDocente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreDocenteActionPerformed
 
+    private void limpiarCampos(){
+        txtNombreDocente.setText("");
+        txtCIDocente.setText("");
+        txtMailDocente.setText("");
+        txtAnioIngresoDocente.setText("");
+    }
+    
+    private void cargarDocentes(){
+        ArrayList<Docente> listaDocentes = sistema.getListaDocentes();
+        
+        if (listaDocentes.size() > 0){
+            for (int i = 0; i < listaDocentes.size(); i++){
+                modeloDocente.addElement(listaDocentes.get(i));
+            }
+            lstDocente.setModel(modeloDocente);
+        }
+    }
+    
     private void btnEnviarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarDocenteActionPerformed
         String nombre = txtNombreDocente.getText();
         String cedula = txtCIDocente.getText();
         String mail = txtMailDocente.getText();
         int anioIngreso = Integer.parseInt(txtAnioIngresoDocente.getText());
         Docente d = new Docente(nombre, cedula, mail, anioIngreso);
-        d.getCedula();
         sistema.agregarDocente(d);
         sistema.serializar();
+        modeloDocente.addElement(d);
         JOptionPane.showMessageDialog(this, "Docente ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        this.limpiarCampos();
     }//GEN-LAST:event_btnEnviarDocenteActionPerformed
 
+    private void btnLimpiarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarDocenteActionPerformed
+        this.limpiarCampos();
+    }//GEN-LAST:event_btnLimpiarDocenteActionPerformed
 
+    DefaultListModel modeloDocente = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviarDocente;
     private javax.swing.JButton btnLimpiarDocente;
