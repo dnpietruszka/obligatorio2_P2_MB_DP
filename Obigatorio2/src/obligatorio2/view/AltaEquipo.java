@@ -8,6 +8,7 @@ package obligatorio2.view;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import obligatorio2.model.Equipo;
 import obligatorio2.model.Estudiante;
 import obligatorio2.model.Sistema;
 
@@ -192,7 +193,15 @@ public class AltaEquipo extends javax.swing.JFrame {
 
     private void btnCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEquipoActionPerformed
         if(modeloEquipo.size() == 3){
-            
+            ArrayList<Estudiante> estudiantesEquipo = new ArrayList<Estudiante>();
+            for(int i = 0; i < 3; i++){
+                Object o = modeloEquipo.get(i);
+                estudiantesEquipo.add((Estudiante)o);
+            }
+            int numeroEquipo = sistema.getSiguienteNumeroEquipo();
+            Equipo e = new Equipo("Equipo - " + numeroEquipo, numeroEquipo,estudiantesEquipo);
+            modeloEquipos.addElement(e);
+            JOptionPane.showMessageDialog(this, "Equipo ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Los equipos deben contener 3 estudiantes", "ATENCION", JOptionPane.WARNING_MESSAGE);
         }

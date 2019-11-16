@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -20,12 +21,12 @@ public class Sistema implements Serializable  {
     
     private ArrayList<Estudiante> listaEstudiantes;
     private ArrayList<Docente> listaDocentes;
+    private ArrayList<Equipo> listaEquipos;
     
     public Sistema(){
-    
         listaEstudiantes = new ArrayList<Estudiante>();
         listaDocentes = new ArrayList<Docente>();
-    
+        listaEquipos = new ArrayList<Equipo>();
     }
 
     public ArrayList<Estudiante> getListaEstudiantes() {
@@ -36,10 +37,6 @@ public class Sistema implements Serializable  {
         listaEstudiantes.add(e);
     }
     
-    public void eliminarEstudiante(Estudiante e){
-        listaEstudiantes.remove(e);
-    }
-    
     public ArrayList<Docente> getListaDocentes() {
         return listaDocentes;
     }
@@ -47,9 +44,13 @@ public class Sistema implements Serializable  {
     public void agregarDocente(Docente d){
         listaDocentes.add(d);
     }
-    
-    public void eliminarDocente(Docente d){
-        listaDocentes.remove(d);
+
+    public ArrayList<Equipo> getListaEquipos() {
+        return listaEquipos;
+    }
+
+    public void agregarEquipo(Equipo e) {
+        this.listaEquipos.add(e);
     }
     
     public void serializar(){
@@ -65,5 +66,15 @@ public class Sistema implements Serializable  {
            } catch (IOException e) {
                   e.printStackTrace();
            }
+    }
+    
+    public int getSiguienteNumeroEquipo(){
+        int size = this.listaEquipos.size();
+        if(size > 0){
+            Collections.sort(listaEquipos);
+            return listaEquipos.get((size-1)).getNumero()+1;
+        } else {
+            return 1;
+        }
     }
 }

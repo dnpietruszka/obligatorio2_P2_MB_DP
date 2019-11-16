@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 package obligatorio2.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author matias
  */
-public class Equipo {
+public class Equipo implements Comparable<Equipo>, Serializable {
     private String nombre;
     private ArrayList<Estudiante> listaEstudiantes;
+    private int numero;
     
-    public Equipo(String nombre){
+    public Equipo(String nombre, int numero, ArrayList<Estudiante> listaEstudiantes){
         this.nombre = nombre;
-        this.listaEstudiantes = new ArrayList<Estudiante>();
+        this.listaEstudiantes = listaEstudiantes;
+        this.numero = numero;
+        
     }
     
     public String getNombre(){
@@ -27,11 +31,25 @@ public class Equipo {
         this.nombre = nombre;
     }
     
-    public ArrayList<Estudiante> getEstudiantes(){
+    public ArrayList<Estudiante> getListaEstudiantes(){
         return this.listaEstudiantes;
     }
     
-    public void agregarEstudiante(Estudiante e){
-        listaEstudiantes.add(e);
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    @Override
+    public int compareTo(Equipo e) {
+        return e.getNumero() - this.getNumero();
+    }
+    
+    @Override
+    public String toString(){
+        return this.getNombre();
     }
 }
