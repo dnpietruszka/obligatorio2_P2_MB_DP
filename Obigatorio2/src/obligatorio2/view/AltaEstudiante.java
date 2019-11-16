@@ -32,7 +32,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlRegistro = new javax.swing.JPanel();
+        pnlRegistroEstudiante = new javax.swing.JPanel();
         lblNombre = new javax.swing.JLabel();
         lblCI = new javax.swing.JLabel();
         lblMail = new javax.swing.JLabel();
@@ -45,7 +45,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
         txtMail = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
         txtSemestre = new javax.swing.JTextField();
-        pnlLista = new javax.swing.JPanel();
+        pnlListaEstudiante = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEstudiante = new javax.swing.JList<>();
         txtTitulo = new javax.swing.JLabel();
@@ -77,27 +77,27 @@ public class AltaEstudiante extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlRegistroLayout = new javax.swing.GroupLayout(pnlRegistro);
-        pnlRegistro.setLayout(pnlRegistroLayout);
-        pnlRegistroLayout.setHorizontalGroup(
-            pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistroLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlRegistroEstudianteLayout = new javax.swing.GroupLayout(pnlRegistroEstudiante);
+        pnlRegistroEstudiante.setLayout(pnlRegistroEstudianteLayout);
+        pnlRegistroEstudianteLayout.setHorizontalGroup(
+            pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistroEstudianteLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlRegistroEstudianteLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(txtEnviar)
                         .addGap(18, 18, 18)
                         .addComponent(txtLimpiar))
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRegistroEstudianteLayout.createSequentialGroup()
+                        .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCI)
                             .addComponent(lblNombre)
                             .addComponent(lblMail)
                             .addComponent(lblNumero)
                             .addComponent(lblSemestre))
                         .addGap(27, 27, 27)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre)
                             .addComponent(txtCI)
                             .addComponent(txtMail)
@@ -105,31 +105,31 @@ public class AltaEstudiante extends javax.swing.JFrame {
                             .addComponent(txtSemestre))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        pnlRegistroLayout.setVerticalGroup(
-            pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistroLayout.createSequentialGroup()
+        pnlRegistroEstudianteLayout.setVerticalGroup(
+            pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistroEstudianteLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCI))
                 .addGap(22, 22, 22)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMail))
                 .addGap(22, 22, 22)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNumero))
                 .addGap(21, 21, 21)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSemestre))
                 .addGap(37, 37, 37)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlRegistroEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEnviar)
                     .addComponent(txtLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -142,18 +142,18 @@ public class AltaEstudiante extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstEstudiante);
 
-        javax.swing.GroupLayout pnlListaLayout = new javax.swing.GroupLayout(pnlLista);
-        pnlLista.setLayout(pnlListaLayout);
-        pnlListaLayout.setHorizontalGroup(
-            pnlListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListaLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlListaEstudianteLayout = new javax.swing.GroupLayout(pnlListaEstudiante);
+        pnlListaEstudiante.setLayout(pnlListaEstudianteLayout);
+        pnlListaEstudianteLayout.setHorizontalGroup(
+            pnlListaEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListaEstudianteLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
-        pnlListaLayout.setVerticalGroup(
-            pnlListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListaLayout.createSequentialGroup()
+        pnlListaEstudianteLayout.setVerticalGroup(
+            pnlListaEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListaEstudianteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addContainerGap())
@@ -170,9 +170,9 @@ public class AltaEstudiante extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlRegistroEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(pnlListaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(txtTitulo)))
@@ -185,8 +185,8 @@ public class AltaEstudiante extends javax.swing.JFrame {
                 .addComponent(txtTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pnlListaEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlRegistroEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -220,8 +220,8 @@ public class AltaEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblSemestre;
     private javax.swing.JList<String> lstEstudiante;
-    private javax.swing.JPanel pnlLista;
-    private javax.swing.JPanel pnlRegistro;
+    private javax.swing.JPanel pnlListaEstudiante;
+    private javax.swing.JPanel pnlRegistroEstudiante;
     private javax.swing.JTextField txtCI;
     private javax.swing.JButton txtEnviar;
     private javax.swing.JButton txtLimpiar;

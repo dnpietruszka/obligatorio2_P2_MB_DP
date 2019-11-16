@@ -27,9 +27,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="pnlRegistro" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlRegistroEstudiante" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pnlLista" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlListaEstudiante" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
@@ -47,15 +47,15 @@
               <Component id="txtTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="16" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnlLista" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="pnlRegistro" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlListaEstudiante" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlRegistroEstudiante" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="pnlRegistro">
+    <Container class="javax.swing.JPanel" name="pnlRegistroEstudiante">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -183,7 +183,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnlLista">
+    <Container class="javax.swing.JPanel" name="pnlListaEstudiante">
 
       <Layout>
         <DimensionLayout dim="0">

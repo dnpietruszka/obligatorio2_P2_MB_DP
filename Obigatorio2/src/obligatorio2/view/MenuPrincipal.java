@@ -35,14 +35,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         menuPrincipal = new javax.swing.JMenuBar();
-        mnEstudiante = new javax.swing.JMenu();
+        mnAltaEstudiante = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mnAltaDocente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        mnEstudiante.setText("Estudiante");
+        mnAltaEstudiante.setText("Estudiante");
 
         jMenuItem1.setText("Alta");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,20 +50,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        mnEstudiante.add(jMenuItem1);
+        mnAltaEstudiante.add(jMenuItem1);
 
-        jMenuItem2.setText("Baja");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuPrincipal.add(mnAltaEstudiante);
+
+        jMenu1.setText("Docente");
+
+        mnAltaDocente.setText("Alta");
+        mnAltaDocente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                mnAltaDocenteActionPerformed(evt);
             }
         });
-        mnEstudiante.add(jMenuItem2);
+        jMenu1.add(mnAltaDocente);
 
-        jMenuItem3.setText("Modificacion");
-        mnEstudiante.add(jMenuItem3);
-
-        menuPrincipal.add(mnEstudiante);
+        menuPrincipal.add(jMenu1);
 
         setJMenuBar(menuPrincipal);
 
@@ -86,16 +87,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         altaEstudiante.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void mnAltaDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAltaDocenteActionPerformed
+        AltaDocente altaDocente = new AltaDocente(sistema);
+        altaDocente.setVisible(true);
+    }//GEN-LAST:event_mnAltaDocenteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuPrincipal;
-    private javax.swing.JMenu mnEstudiante;
+    private javax.swing.JMenuItem mnAltaDocente;
+    private javax.swing.JMenu mnAltaEstudiante;
     // End of variables declaration//GEN-END:variables
 }
