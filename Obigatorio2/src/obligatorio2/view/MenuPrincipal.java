@@ -5,6 +5,7 @@
  */
 package obligatorio2.view;
 
+import javax.swing.JOptionPane;
 import obligatorio2.model.Sistema;
 
 
@@ -37,8 +38,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menuPrincipal = new javax.swing.JMenuBar();
         mnAltaEstudiante = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        mnDocente = new javax.swing.JMenu();
         mnAltaDocente = new javax.swing.JMenuItem();
+        mnEquipo = new javax.swing.JMenu();
+        mnAltaEquipo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +57,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuPrincipal.add(mnAltaEstudiante);
 
-        jMenu1.setText("Docente");
+        mnDocente.setText("Docente");
 
         mnAltaDocente.setText("Alta");
         mnAltaDocente.addActionListener(new java.awt.event.ActionListener() {
@@ -62,9 +65,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 mnAltaDocenteActionPerformed(evt);
             }
         });
-        jMenu1.add(mnAltaDocente);
+        mnDocente.add(mnAltaDocente);
 
-        menuPrincipal.add(jMenu1);
+        menuPrincipal.add(mnDocente);
+
+        mnEquipo.setText("Equipo");
+
+        mnAltaEquipo.setText("Alta");
+        mnAltaEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAltaEquipoActionPerformed(evt);
+            }
+        });
+        mnEquipo.add(mnAltaEquipo);
+
+        menuPrincipal.add(mnEquipo);
 
         setJMenuBar(menuPrincipal);
 
@@ -92,12 +107,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         altaDocente.setVisible(true);
     }//GEN-LAST:event_mnAltaDocenteActionPerformed
 
+    private void mnAltaEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAltaEquipoActionPerformed
+        if (sistema.getListaEstudiantes().size() > 0){
+            AltaEquipo altaEquipo = new AltaEquipo(sistema);
+            altaEquipo.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay estudiantes registrados en el sistema, por favor, registre estudiantes y vuelva a intentar", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_mnAltaEquipoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar menuPrincipal;
     private javax.swing.JMenuItem mnAltaDocente;
+    private javax.swing.JMenuItem mnAltaEquipo;
     private javax.swing.JMenu mnAltaEstudiante;
+    private javax.swing.JMenu mnDocente;
+    private javax.swing.JMenu mnEquipo;
     // End of variables declaration//GEN-END:variables
 }
