@@ -112,7 +112,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             AltaEquipo altaEquipo = new AltaEquipo(sistema);
             altaEquipo.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Deben existir al menos 3 estudiantes registrados para registrar equipos", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Deben existir al menos 3 estudiantes registrados en el sistema para registrar equipos", "ATENCION", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_mnAltaEquipoActionPerformed
 

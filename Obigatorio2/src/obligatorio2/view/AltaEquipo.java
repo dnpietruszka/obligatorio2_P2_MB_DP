@@ -7,6 +7,7 @@ package obligatorio2.view;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import obligatorio2.model.Estudiante;
 import obligatorio2.model.Sistema;
 
@@ -72,6 +73,11 @@ public class AltaEquipo extends javax.swing.JFrame {
         });
 
         btnCrearEquipo.setText("Crear");
+        btnCrearEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearEquipoActionPerformed(evt);
+            }
+        });
 
         btnEliminarEstudianteLista.setText("Eliminar");
         btnEliminarEstudianteLista.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +164,23 @@ public class AltaEquipo extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         Object e = lstEstudiantes.getSelectedValue();
-        modeloEquipo.addElement(e);
+        if(modeloEquipo.size() > 0){
+            boolean objetoExistente = false;
+            for (int i = 0; i < modeloEquipo.size(); i++){
+                Object o = modeloEquipo.get(i);
+                Estudiante eq = (Estudiante)o;
+                e = (Estudiante)e;
+                if(e.equals(eq)){
+                    objetoExistente = true;
+                }
+            }
+            if(!objetoExistente){
+                modeloEquipo.addElement(e);
+            }
+        } else {
+            modeloEquipo.addElement(e);
+        }
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarEstudianteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteListaActionPerformed
@@ -167,6 +189,14 @@ public class AltaEquipo extends javax.swing.JFrame {
             modeloEquipo.remove(index);
         }    
     }//GEN-LAST:event_btnEliminarEstudianteListaActionPerformed
+
+    private void btnCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearEquipoActionPerformed
+        if(modeloEquipo.size() == 3){
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Los equipos deben contener 3 estudiantes", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCrearEquipoActionPerformed
 
     DefaultListModel modeloEstudiante = new DefaultListModel();
     DefaultListModel modeloEquipo = new DefaultListModel();
