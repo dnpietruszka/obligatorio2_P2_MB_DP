@@ -24,7 +24,6 @@ public class Principal {
             FileInputStream fileIn = new FileInputStream("sistema");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             s = (Sistema) in.readObject();
-            System.out.println("After Deserialization" + s);
         } catch (FileNotFoundException e) {
             s = new Sistema();
         } catch (IOException e) {

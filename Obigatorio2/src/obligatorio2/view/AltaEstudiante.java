@@ -212,6 +212,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
         e.getCedula();
         sistema.agregarEstudiante(e);
         sistema.serializar();
+        defaultListModel.addElement(e);
         JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_txtEnviarActionPerformed
 
