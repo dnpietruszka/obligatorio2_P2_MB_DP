@@ -27,17 +27,134 @@ public class AltaProblema extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlRegistroProblema = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblDescripcion = new javax.swing.JLabel();
+        lblLink = new javax.swing.JLabel();
+        lblDocente = new javax.swing.JLabel();
+        txtTitulo = new javax.swing.JTextField();
+        txtLink = new javax.swing.JTextField();
+        cbDocente = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
+        btnEnviar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        pnlVistaProblemas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstProblemas = new javax.swing.JList<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblTitulo.setText("Titulo");
+
+        lblDescripcion.setText("Descripcion");
+
+        lblLink.setText("Link");
+
+        lblDocente.setText("Docente");
+
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcion);
+
+        btnEnviar.setText("Enviar");
+
+        btnLimpiar.setText("Limpiar");
+
+        javax.swing.GroupLayout pnlRegistroProblemaLayout = new javax.swing.GroupLayout(pnlRegistroProblema);
+        pnlRegistroProblema.setLayout(pnlRegistroProblemaLayout);
+        pnlRegistroProblemaLayout.setHorizontalGroup(
+            pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistroProblemaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistroProblemaLayout.createSequentialGroup()
+                        .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTitulo)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)))
+                    .addGroup(pnlRegistroProblemaLayout.createSequentialGroup()
+                        .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDocente)
+                            .addComponent(lblLink, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlRegistroProblemaLayout.createSequentialGroup()
+                                .addComponent(btnEnviar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtLink)
+                            .addComponent(cbDocente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        pnlRegistroProblemaLayout.setVerticalGroup(
+            pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegistroProblemaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDescripcion)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLink)
+                    .addComponent(txtLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDocente)
+                    .addComponent(cbDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEnviar)
+                    .addComponent(btnLimpiar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jScrollPane2.setViewportView(lstProblemas);
+
+        javax.swing.GroupLayout pnlVistaProblemasLayout = new javax.swing.GroupLayout(pnlVistaProblemas);
+        pnlVistaProblemas.setLayout(pnlVistaProblemasLayout);
+        pnlVistaProblemasLayout.setHorizontalGroup(
+            pnlVistaProblemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVistaProblemasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlVistaProblemasLayout.setVerticalGroup(
+            pnlVistaProblemasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVistaProblemasLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlRegistroProblema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlVistaProblemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlRegistroProblema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlVistaProblemas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,5 +197,20 @@ public class AltaProblema extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEnviar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cbDocente;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblDocente;
+    private javax.swing.JLabel lblLink;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JList<String> lstProblemas;
+    private javax.swing.JPanel pnlRegistroProblema;
+    private javax.swing.JPanel pnlVistaProblemas;
+    private javax.swing.JTextArea txtDescripcion;
+    private javax.swing.JTextField txtLink;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

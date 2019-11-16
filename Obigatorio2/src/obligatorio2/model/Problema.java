@@ -10,8 +10,7 @@ package obligatorio2.model;
  * @author diego
  */
 public class Problema {
-    
-    
+   
     private String titulo;
     private String descripcion;
     private String link;
