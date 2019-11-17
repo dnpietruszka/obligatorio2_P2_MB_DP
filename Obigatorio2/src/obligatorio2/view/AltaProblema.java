@@ -71,6 +71,8 @@ public class AltaProblema extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstProblemas = new javax.swing.JList<>();
 
+        setTitle("Ingresar Problema");
+
         lblTitulo.setText("Titulo");
 
         lblDescripcion.setText("Descripcion");

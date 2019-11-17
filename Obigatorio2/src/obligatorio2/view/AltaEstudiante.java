@@ -53,6 +53,8 @@ public class AltaEstudiante extends javax.swing.JFrame {
         lstEstudiantes = new javax.swing.JList<>();
         txtTitulo = new javax.swing.JLabel();
 
+        setTitle("Ingresar Estudiante");
+
         lblNombre.setText("Nombre");
 
         lblCI.setText("CI");

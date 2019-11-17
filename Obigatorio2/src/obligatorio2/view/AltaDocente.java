@@ -53,6 +53,8 @@ public class AltaDocente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstDocente = new javax.swing.JList<>();
 
+        setTitle("Ingresar Docente");
+
         lblNombreDocente.setText("Nombre");
 
         lblCIDocente.setText("CI");

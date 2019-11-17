@@ -73,6 +73,8 @@ public class AltaEquipo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lstEquipos = new javax.swing.JList<>();
 
+        setTitle("Ingresar Equipo");
+
         jScrollPane1.setViewportView(lstEstudiantes);
 
         jScrollPane3.setViewportView(lstEquipo);

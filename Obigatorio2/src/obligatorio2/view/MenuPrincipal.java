@@ -44,6 +44,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnAltaEquipo = new javax.swing.JMenuItem();
         mnProblema = new javax.swing.JMenu();
         mnAltaProblema = new javax.swing.JMenuItem();
+        mnCargarSolucion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +94,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnProblema.add(mnAltaProblema);
 
+        mnCargarSolucion.setText("Cargar Solucion");
+        mnCargarSolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCargarSolucionActionPerformed(evt);
+            }
+        });
+        mnProblema.add(mnCargarSolucion);
+
         menuPrincipal.add(mnProblema);
 
         setJMenuBar(menuPrincipal);
@@ -140,6 +149,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mnAltaProblemaActionPerformed
 
+    private void mnCargarSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCargarSolucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnCargarSolucionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
@@ -148,6 +161,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnAltaEquipo;
     private javax.swing.JMenu mnAltaEstudiante;
     private javax.swing.JMenuItem mnAltaProblema;
+    private javax.swing.JMenuItem mnCargarSolucion;
     private javax.swing.JMenu mnDocente;
     private javax.swing.JMenu mnEquipo;
     private javax.swing.JMenu mnProblema;
