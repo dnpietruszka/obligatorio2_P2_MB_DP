@@ -42,6 +42,17 @@ public class AltaEquipo extends javax.swing.JFrame {
         }
     }
     
+    private void actualizarEstudiantes(){
+        modeloEstudiante.clear();
+        ArrayList<Estudiante> listaEstudiantes = sistema.getListaEstudiantes();
+        if (listaEstudiantes.size() > 0){
+            for (int i = 0; i < listaEstudiantes.size(); i++){
+                modeloEstudiante.addElement(listaEstudiantes.get(i));
+            }
+            lstEstudiantes.setModel(modeloEstudiante);
+        }
+    }
+    
     private void cargarEquipos(){
         ArrayList<Equipo> listaEquipos = sistema.getListaEquipos();
         if (listaEquipos.size() > 0){
@@ -213,8 +224,14 @@ public class AltaEquipo extends javax.swing.JFrame {
             }
             int numeroEquipo = sistema.getSiguienteNumeroEquipo();
             Equipo e = new Equipo("Equipo " + numeroEquipo, numeroEquipo,estudiantesEquipo);
+            for(int i = 0; i < 3; i++){
+                Object o = modeloEquipo.get(i);
+                Estudiante estudiante = (Estudiante)o;
+                estudiante.setEquipo(e);
+            }
             modeloEquipos.addElement(e);
             modeloEquipo.clear();
+            this.actualizarEstudiantes();
             sistema.agregarEquipo(e);
             sistema.serializar();
             JOptionPane.showMessageDialog(this, "Equipo ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);

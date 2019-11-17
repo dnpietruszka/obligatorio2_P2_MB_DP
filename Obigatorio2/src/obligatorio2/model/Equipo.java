@@ -45,7 +45,7 @@ public class Equipo implements Comparable<Equipo>, Serializable {
     
     @Override
     public int compareTo(Equipo e) {
-        return e.getNumero() - this.getNumero();
+        return this.getNumero() - e.getNumero();
     }
     
     @Override
