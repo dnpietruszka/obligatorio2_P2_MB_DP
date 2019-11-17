@@ -27,6 +27,7 @@ public class AltaProblema extends javax.swing.JFrame {
         initComponents();
         sistema = s;
         this.cargarDocentes();
+        this.cargarProblemas();
         lstProblemas.setModel(modeloProblema);
     }
     
@@ -44,6 +45,16 @@ public class AltaProblema extends javax.swing.JFrame {
         txtTitulo.setText("");
         txtDescripcion.setText("");
         txtLink.setText("");
+    }
+    
+    private void cargarProblemas(){
+        ArrayList<Problema> listaProblemas = sistema.getListaProblemas();
+        if (listaProblemas.size() > 0){
+            for (int i = 0; i < listaProblemas.size(); i++){
+                modeloProblema.addElement(listaProblemas.get(i));
+            }
+            lstProblemas.setModel(modeloProblema);
+        }
     }
 
     /**
@@ -209,6 +220,8 @@ public class AltaProblema extends javax.swing.JFrame {
         Object o = cbDocente.getSelectedItem();
         Problema p = new Problema(titulo, descripcion, link, (Docente)o);
         modeloProblema.addElement(p);
+        sistema.agregarProblema(p);
+        sistema.serializar();
         JOptionPane.showMessageDialog(this, "Problema ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEnviarActionPerformed
 

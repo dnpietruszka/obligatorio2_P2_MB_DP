@@ -5,17 +5,48 @@
  */
 package obligatorio2.view;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import obligatorio2.model.Equipo;
+import obligatorio2.model.Problema;
+import obligatorio2.model.Sistema;
+
 /**
  *
  * @author diego
  */
 public class CargarSolucionEstudiante extends javax.swing.JFrame {
+    
+    private Sistema sistema;
 
     /**
      * Creates new form CargarSolucionEstudiante
      */
-    public CargarSolucionEstudiante() {
+    public CargarSolucionEstudiante(Sistema s) {
         initComponents();
+        sistema = s;
+        this.cargarProblemas();
+        this.cargarEquipos();
+    }
+    
+    private void cargarProblemas(){
+        ArrayList<Problema> listaProblemas = sistema.getListaProblemas();
+        if (listaProblemas.size() > 0){
+            for (int i = 0; i < listaProblemas.size(); i++){
+                modeloProblemas.addElement(listaProblemas.get(i));
+            }
+            lstProblemas.setModel(modeloProblemas);
+        }
+    }
+    
+    private void cargarEquipos(){
+        ArrayList<Equipo> listaEquipos = sistema.getListaEquipos();
+        if (listaEquipos.size() > 0){
+            for (int i = 0; i < listaEquipos.size(); i++){
+                modeloEquipos.addElement(listaEquipos.get(i));
+            }
+            lstEquipos.setModel(modeloEquipos);
+        }
     }
 
     /**
@@ -35,11 +66,15 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         lstEquipos = new javax.swing.JList<>();
         pnlResultado = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstResultado = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         pnlArchivo = new javax.swing.JPanel();
+        lblTiempo = new javax.swing.JLabel();
+        txtTiempo = new javax.swing.JTextField();
+        cbLenguaje = new javax.swing.JComboBox<>();
+        lblLenguaje = new javax.swing.JLabel();
+        flSelect = new javax.swing.JFileChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso Manual");
 
         jScrollPane1.setViewportView(lstProblemas);
@@ -74,7 +109,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
             .addComponent(jScrollPane2)
         );
 
-        jScrollPane3.setViewportView(jList1);
+        jScrollPane3.setViewportView(lstResultado);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Resultado");
@@ -88,7 +123,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResultadoLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(66, 66, 66))
         );
@@ -97,20 +132,64 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
             .addGroup(pnlResultadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        lblTiempo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblTiempo.setText("Tiempo");
+
+        cbLenguaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JAVA", "Python", "C++" }));
+        cbLenguaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLenguajeActionPerformed(evt);
+            }
+        });
+
+        lblLenguaje.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblLenguaje.setText("Lenguaje");
+
+        flSelect.setApproveButtonText("Seleccionar");
+        flSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        flSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flSelectActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlArchivoLayout = new javax.swing.GroupLayout(pnlArchivo);
         pnlArchivo.setLayout(pnlArchivoLayout);
         pnlArchivoLayout.setHorizontalGroup(
             pnlArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnlArchivoLayout.createSequentialGroup()
+                .addGroup(pnlArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlArchivoLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(lblTiempo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLenguaje)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbLenguaje, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlArchivoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(flSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnlArchivoLayout.setVerticalGroup(
             pnlArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
+            .addGroup(pnlArchivoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlArchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTiempo)
+                    .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbLenguaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLenguaje))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(flSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,15 +198,15 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(pnlProblemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnlArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,58 +220,40 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
                             .addComponent(pnlEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(pnlArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CargarSolucionEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CargarSolucionEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CargarSolucionEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CargarSolucionEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void cbLenguajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLenguajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbLenguajeActionPerformed
+
+    private void flSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flSelectActionPerformed
+        String com = evt.getActionCommand();
+        if (com.equals("ApproveSelection")) {
+            //Boton Open
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CargarSolucionEstudiante().setVisible(true);
-            }
-        });
-    }
-
+    }//GEN-LAST:event_flSelectActionPerformed
+    DefaultListModel modeloEquipos = new DefaultListModel();
+    DefaultListModel modeloProblemas = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbLenguaje;
+    private javax.swing.JFileChooser flSelect;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblLenguaje;
+    private javax.swing.JLabel lblTiempo;
     private javax.swing.JList<String> lstEquipos;
     private javax.swing.JList<String> lstProblemas;
+    private javax.swing.JList<String> lstResultado;
     private javax.swing.JPanel pnlArchivo;
     private javax.swing.JPanel pnlEquipos;
     private javax.swing.JPanel pnlProblemas;
     private javax.swing.JPanel pnlResultado;
+    private javax.swing.JTextField txtTiempo;
     // End of variables declaration//GEN-END:variables
 }

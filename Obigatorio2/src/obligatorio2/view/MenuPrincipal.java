@@ -150,7 +150,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnAltaProblemaActionPerformed
 
     private void mnCargarSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCargarSolucionActionPerformed
-        // TODO add your handling code here:
+        CargarSolucionEstudiante cargarSolucion = new CargarSolucionEstudiante(sistema);
+        cargarSolucion.setVisible(true);
     }//GEN-LAST:event_mnCargarSolucionActionPerformed
 
 
