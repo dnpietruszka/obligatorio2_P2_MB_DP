@@ -23,6 +23,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
         initComponents();
         sistema = s;
         this.cargarEstudiantes();
+        lstEstudiantes.setModel(modeloEstudiante);
     }
 
     /**

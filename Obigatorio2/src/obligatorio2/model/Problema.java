@@ -5,11 +5,13 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author diego
  */
-public class Problema {
+public class Problema implements Serializable {
    
     private String titulo;
     private String descripcion;

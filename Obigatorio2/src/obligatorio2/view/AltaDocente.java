@@ -26,6 +26,7 @@ public class AltaDocente extends javax.swing.JFrame {
         initComponents();
         sistema = s;
         this.cargarDocentes();
+        lstDocente.setModel(modeloDocente);
     }
 
     /**

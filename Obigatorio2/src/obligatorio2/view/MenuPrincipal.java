@@ -42,6 +42,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnAltaDocente = new javax.swing.JMenuItem();
         mnEquipo = new javax.swing.JMenu();
         mnAltaEquipo = new javax.swing.JMenuItem();
+        mnProblema = new javax.swing.JMenu();
+        mnAltaProblema = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +83,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuPrincipal.add(mnEquipo);
 
+        mnProblema.setText("Problema");
+
+        mnAltaProblema.setText("Alta");
+        mnAltaProblema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAltaProblemaActionPerformed(evt);
+            }
+        });
+        mnProblema.add(mnAltaProblema);
+
+        menuPrincipal.add(mnProblema);
+
         setJMenuBar(menuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,6 +130,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnAltaEquipoActionPerformed
 
+    private void mnAltaProblemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAltaProblemaActionPerformed
+        if(sistema.getListaDocentes().size() > 0){
+            AltaProblema altaProblema = new AltaProblema(sistema);
+            altaProblema.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Deben existir al menos 1 docente en el sistema para poder registrar problemas", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_mnAltaProblemaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
@@ -123,7 +147,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnAltaDocente;
     private javax.swing.JMenuItem mnAltaEquipo;
     private javax.swing.JMenu mnAltaEstudiante;
+    private javax.swing.JMenuItem mnAltaProblema;
     private javax.swing.JMenu mnDocente;
     private javax.swing.JMenu mnEquipo;
+    private javax.swing.JMenu mnProblema;
     // End of variables declaration//GEN-END:variables
 }
