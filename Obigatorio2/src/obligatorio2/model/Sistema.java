@@ -87,4 +87,17 @@ public class Sistema implements Serializable  {
             return 1;
         }
     }
+    
+    public void leerArchivo (String arch){
+        ArchivoLectura al = new ArchivoLectura(arch);
+        //Archivo grabacion iria en esta linea
+        while (al.hayMasLineas()){
+            String linea [] = al.linea().split(" ");
+            for (int i = 0; i<linea.length; i++){
+                //Aca grabaria la linea
+            }
+        }
+        al.cerrar();
+        //cierro tambien archivo grabacion
+    }
 }
