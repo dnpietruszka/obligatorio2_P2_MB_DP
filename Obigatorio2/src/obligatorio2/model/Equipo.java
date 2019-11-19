@@ -51,7 +51,7 @@ public class Equipo implements Comparable<Equipo>, Serializable {
     @Override
     public String toString(){
         String retorno = this.getNombre();
-        retorno+=" (";
+        retorno+=" [";
         boolean esPrimero = true;
         for (int i = 0; i < this.listaEstudiantes.size(); i++){
             if (esPrimero){
@@ -61,7 +61,7 @@ public class Equipo implements Comparable<Equipo>, Serializable {
             }
             esPrimero = false;
         }
-        retorno+=")";
+        retorno+="]";
         return retorno;
     }
 }
