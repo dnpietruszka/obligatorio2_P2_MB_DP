@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import obligatorio2.utils.ArchivoLectura;
 
 /**
  *
@@ -86,18 +87,5 @@ public class Sistema implements Serializable  {
         } else {
             return 1;
         }
-    }
-    
-    public void leerArchivo (String arch){
-        ArchivoLectura al = new ArchivoLectura(arch);
-        //Archivo grabacion iria en esta linea
-        while (al.hayMasLineas()){
-            String linea [] = al.linea().split(" ");
-            for (int i = 0; i<linea.length; i++){
-                //Aca grabaria la linea
-            }
-        }
-        al.cerrar();
-        //cierro tambien archivo grabacion
     }
 }

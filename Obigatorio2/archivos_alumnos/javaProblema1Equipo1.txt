@@ -1,0 +1,19 @@
+public class Principal {
+    public static void main(String[] args){
+        Sistema s;
+        try {
+            FileInputStream fileIn = new FileInputStream("sistema");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            s = (Sistema) in.readObject();
+        } catch (FileNotFoundException e) {
+            s = new Sistema();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            s = new Sistema();
+        } catch (ClassNotFoundException e) {
+            s = new Sistema();
+        }
+        MenuPrincipal menuPrincipal = new MenuPrincipal(s);
+        menuPrincipal.setVisible(true);
+    }
+}

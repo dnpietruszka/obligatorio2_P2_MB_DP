@@ -5,14 +5,16 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author diego
  */
-public class Envio {
+public class Envio implements Serializable{
     
     private Equipo equipo;
-    private Resultado resultado;
+    private Problema problema;
 
     public Equipo getEquipo() {
         return equipo;
@@ -22,14 +24,12 @@ public class Envio {
         this.equipo = equipo;
     }
 
-    public Resultado getResultado() {
-        return resultado;
+    public Problema getProblema() {
+        return problema;
     }
 
-    public void setResultado(Resultado resultado) {
-        this.resultado = resultado;
+    public void setProblema(Problema problema) {
+        this.problema = problema;
     }
-    
-    
-    
+
 }

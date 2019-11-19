@@ -5,11 +5,13 @@
  */
 package obligatorio2.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author diego
  */
-public class Resultado {
+public class Resultado implements Serializable{
     
     private String resultado;
 
@@ -20,7 +22,5 @@ public class Resultado {
     public void setResultado(String resultado) {
         this.resultado = resultado;
     }
-    
-    
     
 }

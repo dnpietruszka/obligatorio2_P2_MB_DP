@@ -11,6 +11,7 @@ import javax.swing.DefaultListModel;
 import obligatorio2.model.Equipo;
 import obligatorio2.model.Problema;
 import obligatorio2.model.Sistema;
+import obligatorio2.utils.ArchivoLectura;
 
 /**
  *
@@ -19,6 +20,7 @@ import obligatorio2.model.Sistema;
 public class CargarSolucionEstudiante extends javax.swing.JFrame {
     
     private Sistema sistema;
+    private String pathEquipo;
 
     /**
      * Creates new form CargarSolucionEstudiante
@@ -197,6 +199,11 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         );
 
         btnVerificar.setText("VERIFICAR");
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -256,13 +263,21 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
     private void flSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flSelectActionPerformed
         String com = evt.getActionCommand();
         if (com.equals("ApproveSelection")) {
-            //Boton Open
-            String path = flSelect.getSelectedFile().getAbsolutePath();
-            System.out.println(path);
+            //Boton Seleccionar
+            pathEquipo = flSelect.getSelectedFile().getAbsolutePath();
+            System.out.println(pathEquipo);
         } else {
             flSelect.setSelectedFile(new File(""));
         }
     }//GEN-LAST:event_flSelectActionPerformed
+
+    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        Object o = lstProblemas.getSelectedValue();
+        Problema problema = (Problema)o;
+        String pathProblema = problema.getLink();
+        System.out.println(pathProblema);
+        System.out.println(pathEquipo);
+    }//GEN-LAST:event_btnVerificarActionPerformed
     DefaultListModel modeloEquipos = new DefaultListModel();
     DefaultListModel modeloProblemas = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables

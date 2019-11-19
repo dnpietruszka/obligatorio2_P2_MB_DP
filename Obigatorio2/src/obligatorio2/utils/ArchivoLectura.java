@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package obligatorio2.model;
+package obligatorio2.utils;
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.Scanner;
