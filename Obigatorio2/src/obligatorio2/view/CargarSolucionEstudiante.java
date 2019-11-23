@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import obligatorio2.model.Equipo;
 import obligatorio2.model.Problema;
+import obligatorio2.model.Resultado;
 import obligatorio2.model.Sistema;
 import obligatorio2.utils.ArchivoLectura;
 
@@ -30,6 +31,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         sistema = s;
         this.cargarProblemas();
         this.cargarEquipos();
+        lstResultado.setModel(modeloResultados);
     }
     
     private void cargarProblemas(){
@@ -222,13 +224,16 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblInformacionErrores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(74, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(lblInformacionErrores, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,21 +270,61 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         if (com.equals("ApproveSelection")) {
             //Boton Seleccionar
             pathEquipo = flSelect.getSelectedFile().getAbsolutePath();
-            System.out.println(pathEquipo);
         } else {
             flSelect.setSelectedFile(new File(""));
         }
     }//GEN-LAST:event_flSelectActionPerformed
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+        
         Object o = lstProblemas.getSelectedValue();
         Problema problema = (Problema)o;
         String pathProblema = problema.getLink();
         System.out.println(pathProblema);
         System.out.println(pathEquipo);
+        ArchivoLectura aEquipo = new ArchivoLectura(pathEquipo);
+        ArchivoLectura aOficial = new ArchivoLectura(pathProblema);
+        Resultado r = new Resultado();
+        int contadorLineas = 0;
+        int contadorLineasErroneas = 0;
+        while (aOficial.hayMasLineas()){
+            contadorLineas ++;
+            String lineaOficial = aOficial.linea();
+            if(aEquipo.hayMasLineas()){
+                String lineaEquipo = aEquipo.linea();
+                String resultado = r.verificarResultado(lineaEquipo, lineaOficial);
+                switch(resultado){
+                    case "correcto":
+                        modeloResultados.addElement("+Linea " + contadorLineas + ": ok");
+                        System.out.println("+Linea " + contadorLineas + ":" + resultado);
+                        break;
+                    case "incorrecto":
+                        contadorLineasErroneas++;
+                        modeloResultados.addElement("*Linea " + contadorLineas + ": error de datos");
+                        System.out.println("*Linea " + contadorLineas + ":" + resultado);
+                        break;
+                    case "error-formato":
+                        contadorLineasErroneas++;
+                        modeloResultados.addElement("*Linea " + contadorLineas + ": error de formato");
+                        System.out.println("*Linea " + contadorLineas + ":" + resultado);
+                        break;    
+                        
+                }
+            }
+        }
+        if(contadorLineasErroneas > 0){
+            lblEstado.setText("INCORRECTO");
+            lblInformacionErrores.setText(contadorLineasErroneas + " errores en " + contadorLineas + " lineas");
+        } else {
+            lblEstado.setText("CORRECTO");
+        }
+        
+        
+        
     }//GEN-LAST:event_btnVerificarActionPerformed
     DefaultListModel modeloEquipos = new DefaultListModel();
     DefaultListModel modeloProblemas = new DefaultListModel();
+    DefaultListModel modeloResultados = new DefaultListModel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVerificar;
     private javax.swing.JComboBox<String> cbLenguaje;

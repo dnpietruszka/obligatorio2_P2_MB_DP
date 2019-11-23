@@ -6,6 +6,7 @@
 package obligatorio2.model;
 
 import java.io.Serializable;
+import obligatorio2.utils.ArchivoLectura;
 
 /**
  *
@@ -21,6 +22,18 @@ public class Resultado implements Serializable{
 
     public void setResultado(String resultado) {
         this.resultado = resultado;
+    }
+    
+    public String verificarResultado (String lineaEquipo, String lineaOficial){
+        
+        if(lineaEquipo.trim().equals(lineaOficial)){
+            return "correcto";
+        } else {
+            if(lineaEquipo.trim().equalsIgnoreCase(lineaOficial)){
+                return "error-formato";
+            }
+        }
+        return "incorrecto";
     }
     
 }

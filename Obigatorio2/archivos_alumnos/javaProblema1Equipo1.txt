@@ -1,19 +1,5 @@
-public class Principal {
-    public static void main(String[] args){
-        Sistema s;
-        try {
-            FileInputStream fileIn = new FileInputStream("sistema");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            s = (Sistema) in.readObject();
-        } catch (FileNotFoundException e) {
-            s = new Sistema();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            s = new Sistema();
-        } catch (ClassNotFoundException e) {
-            s = new Sistema();
-        }
-        MenuPrincipal menuPrincipal = new MenuPrincipal(s);
-        menuPrincipal.setVisible(true);
-    }
-}
+la SUMA es 20
+la suma es 1354
+l a s u m a e s 8 0
+LA SUMA es 3223
+la suma es 45 
