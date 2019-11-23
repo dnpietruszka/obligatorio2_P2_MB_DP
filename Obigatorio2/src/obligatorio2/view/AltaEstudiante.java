@@ -240,7 +240,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
             correcto = false;
         }
         if (nombre.equals(" ") || nombre.equals("")){
-            System.out.println("Nombre de docente no valido");
+            System.out.println("Nombre de estudiante no valido");
             correcto = false;
         }
         if ((!cedula.matches("[0-9]+") || cedula.length()!=8)){
@@ -248,7 +248,7 @@ public class AltaEstudiante extends javax.swing.JFrame {
             correcto = false;
         }
         if (!mail.contains("@")){
-            System.out.println("Email de docente no valido");
+            System.out.println("Email de estudiante no valido");
             correcto = false;
         }
         if (correcto){
