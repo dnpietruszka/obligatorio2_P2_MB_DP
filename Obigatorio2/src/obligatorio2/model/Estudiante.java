@@ -17,13 +17,11 @@ public class Estudiante extends Persona implements Serializable {
     private int semestre;
     private Equipo equipo;
     
-    
     public Estudiante(String nombre, String cedula, String mail, int numero, int semestre){
         super(nombre, cedula, mail);
         this.numero = numero;
         this.semestre = semestre;
     }
-
 
     public int getNumero() {
         return numero;
