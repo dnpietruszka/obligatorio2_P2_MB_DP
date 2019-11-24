@@ -47,6 +47,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnCargarSolucion = new javax.swing.JMenuItem();
         mnResultados = new javax.swing.JMenu();
         mnVisualizarResultados = new javax.swing.JMenuItem();
+        mnEstadisticas = new javax.swing.JMenu();
+        mnVisualizarEstadisticas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,6 +126,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuPrincipal.add(mnResultados);
 
+        mnEstadisticas.setText("Estadisticas");
+
+        mnVisualizarEstadisticas.setText("Visualizar");
+        mnVisualizarEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVisualizarEstadisticasActionPerformed(evt);
+            }
+        });
+        mnEstadisticas.add(mnVisualizarEstadisticas);
+
+        menuPrincipal.add(mnEstadisticas);
+
         setJMenuBar(menuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,6 +202,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         verResultados.setVisible(true);
     }//GEN-LAST:event_mnVisualizarResultadosActionPerformed
 
+    private void mnVisualizarEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVisualizarEstadisticasActionPerformed
+        VerEstadisticas verEstadisticas = new VerEstadisticas(sistema);
+        verEstadisticas.setVisible(true);
+    }//GEN-LAST:event_mnVisualizarEstadisticasActionPerformed
+          
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMenuItem1;
@@ -199,8 +218,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnCargarSolucion;
     private javax.swing.JMenu mnDocente;
     private javax.swing.JMenu mnEquipo;
+    private javax.swing.JMenu mnEstadisticas;
     private javax.swing.JMenu mnProblema;
     private javax.swing.JMenu mnResultados;
+    private javax.swing.JMenuItem mnVisualizarEstadisticas;
     private javax.swing.JMenuItem mnVisualizarResultados;
     // End of variables declaration//GEN-END:variables
 }
