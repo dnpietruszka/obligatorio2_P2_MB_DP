@@ -6,6 +6,7 @@
 package obligatorio2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -57,8 +58,25 @@ public class Problema implements Serializable {
         this.docente = docente;
     }
     
+    public ArrayList<Envio> getEnviosProblema(ArrayList<Envio> listaEnvios, Problema p){
+        ArrayList<Envio> listaRetorno = new ArrayList<Envio>();
+        for (int i = 0; i < listaEnvios.size(); i++){
+            Problema problemaListaEnvio = listaEnvios.get(i).getProblema();
+            if(this.equals(problemaListaEnvio)){
+                Envio envio = listaEnvios.get(i);
+                listaRetorno.add(envio);
+            }
+        }
+        return listaRetorno;
+    }
+    
     @Override
     public String toString(){
         return this.getTitulo();
+    }
+    
+    @Override
+    public boolean equals(Object e){
+        return this.getTitulo().equals(((Problema)e).getTitulo());
     }
 }

@@ -62,13 +62,7 @@ public class ModeloGrilla{
         table.setRowHeight(150);//tamaño de las celdas
         table.setGridColor(new java.awt.Color(0, 0, 0)); 
         //Se define el tamaño de largo para cada columna y su contenido
-        
-        table.getColumnModel().getColumn(0).setPreferredWidth(60);//documento
-        table.getColumnModel().getColumn(1).setPreferredWidth(60);
-        table.getColumnModel().getColumn(0).setMaxWidth(200);
-        table.getColumnModel().getColumn(1).setMaxWidth(200);
-        table.getColumnModel().getColumn(0).setWidth(200);
-        table.getColumnModel().getColumn(1).setWidth(200);
+
     }
   
     public ModeloGrilla(Sistema s) {

@@ -5,26 +5,115 @@
  */
 package obligatorio2.view;
 
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javafx.scene.layout.Border;
+import javafx.scene.paint.Color;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
+import obligatorio2.model.Envio;
+import obligatorio2.model.Equipo;
+import obligatorio2.model.Problema;
 import obligatorio2.model.Sistema;
-import obligatorio2.utils.ModeloGrilla;
 
 /**
  *
  * @author diego
  */
 public class VerResultados extends javax.swing.JFrame {
+    private JLabel[] labelProblemas;
+    private JLabel[] labelEquipos;
+    private JButton[][] botones;
     private Sistema sistema;
-    ModeloGrilla modelo;
     /**
      * Creates new form VerResultados
      */
     public VerResultados(Sistema s) {
         initComponents();
         sistema = s;
-        modelo = new ModeloGrilla(sistema);
-        modelo.verGrilla(tblResultados, 2);
+        // crear botones y agregarlos al panel
+        inicializarMatrizBotones();
+        inicializarLabelProblemas();
+        inicializarLabelEquipos();
     }
+    
+    private void inicializarMatrizBotones(){
+        ArrayList<Envio> listaEnvios = sistema.getListaEnvios();
+        int cantFilas =  sistema.getListaEquipos().size();
+        int cantColumnas =  sistema.getListaProblemas().size();
+        pnlMatrizBotones.setLayout(new GridLayout(cantFilas, cantColumnas));
+        botones = new JButton[cantFilas][cantColumnas];
+        for (int i = 0; i < cantFilas; i++) {
+            Equipo equipo = sistema.getListaEquipos().get(i);
+            for (int j = 0; j < cantColumnas; j++) {
+                Problema p = sistema.getListaProblemas().get(j);
+                JButton jButton = new JButton("");
+                jButton.setMargin(new Insets(5,5,5,5));
+                if (!equipo.contieneEnvio(listaEnvios)){
+                    jButton.setBackground(java.awt.Color.white);
+                    
+                } else {
+                    ArrayList<Envio> listaEnviosEquipo = equipo.getEnviosEquipo(listaEnvios);
+                    if(equipo.contieneProblema(listaEnviosEquipo, p)){
+                        ArrayList<Envio> listaEnviosProblema = p.getEnviosProblema(listaEnviosEquipo, p);
+                        for(int k = 0; i < listaEnviosProblema.size(); i++){
+                            
+                        }
+                    }
+                }
+                jButton.addActionListener(new ListenerBoton(i, j));
+                pnlMatrizBotones.add(jButton);
+                botones[i][j] = jButton;
+            }
+        }
+    }
+    
+    private void inicializarLabelProblemas(){
+        int cantProblemas =  sistema.getListaProblemas().size();
+        pnlMatrizProblemas.setLayout(new GridLayout(1, cantProblemas));
+        labelProblemas = new JLabel[cantProblemas];
+        for (int i = 0; i < cantProblemas; i++) {
+            JLabel jLabel = new JLabel();
+            jLabel.setOpaque(true);
+            EmptyBorder margin = new EmptyBorder(10,10,10,10);
+            jLabel.setBorder(margin);
+            if (i%2 == 0){
+                jLabel.setBackground(java.awt.Color.LIGHT_GRAY);
+            } else {
+                jLabel.setBackground(java.awt.Color.GRAY);
+            }
+            String tituloProblema = sistema.getListaProblemas().get(i).getTitulo();
+            jLabel.setText(tituloProblema);
+            pnlMatrizProblemas.add(jLabel);
+            labelProblemas[i] = jLabel;
+        }
+    }
+    
+    private void inicializarLabelEquipos(){
+        int cantEquipos =  sistema.getListaEquipos().size();
+        pnlMatrizEquipos.setLayout(new GridLayout(cantEquipos, 1));
+        labelEquipos = new JLabel[cantEquipos];
+        for (int i = 0; i < cantEquipos; i++) {
+            JLabel jLabel = new JLabel();
+            jLabel.setOpaque(true);
+            EmptyBorder margin = new EmptyBorder(10,10,10,10);
+            jLabel.setBorder(margin);
+            if (i%2 == 0){
+                jLabel.setBackground(java.awt.Color.LIGHT_GRAY);
+            } else {
+                jLabel.setBackground(java.awt.Color.GRAY);
+            }
+            String nombreEquipo = sistema.getListaEquipos().get(i).getNombre();
+            jLabel.setText(nombreEquipo);
+            pnlMatrizEquipos.add(jLabel);
+            labelEquipos[i] = jLabel;
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,84 +124,74 @@ public class VerResultados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlVistaResultados = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblResultados = new javax.swing.JTable();
+        pnlMatrizBotones = new javax.swing.JPanel();
+        pnlMatrizProblemas = new javax.swing.JPanel();
+        pnlMatrizEquipos = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tblResultados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblResultados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblResultadosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblResultados);
+        pnlMatrizBotones.setLayout(null);
 
-        javax.swing.GroupLayout pnlVistaResultadosLayout = new javax.swing.GroupLayout(pnlVistaResultados);
-        pnlVistaResultados.setLayout(pnlVistaResultadosLayout);
-        pnlVistaResultadosLayout.setHorizontalGroup(
-            pnlVistaResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlVistaResultadosLayout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
-        pnlVistaResultadosLayout.setVerticalGroup(
-            pnlVistaResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlVistaResultadosLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
+        pnlMatrizProblemas.setLayout(null);
+
+        pnlMatrizEquipos.setLayout(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(pnlVistaResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(pnlMatrizEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(pnlVistaResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlMatrizEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
 
-        pack();
+        setBounds(0, 0, 792, 516);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblResultadosMouseClicked
-        int column = tblResultados.getColumnModel().getColumnIndexAtX(evt.getX());
-        int row = evt.getY()/tblResultados.getRowHeight();
-        if(row < tblResultados.getRowCount() && row >= 0 && column < tblResultados.getColumnCount() && column >= 0){
-            Object value = tblResultados.getValueAt(row, column);
-            if(value instanceof JButton){
-                ((JButton)value).doClick();
-                JButton btn = (JButton)value;
-                System.out.println("Click boton");
-            }
+    
+    private class ListenerBoton implements ActionListener {
+        private int x;
+        private int y;
+        public ListenerBoton(int i, int j) {
+            // en el constructor se almacena la fila y columna que se presionó
+            x = i;
+            y = j;
         }
-    }//GEN-LAST:event_tblResultadosMouseClicked
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // cuando se presiona un botón, se ejecutará este método
+            clickBoton(x, y);
+        }
+    }
+    private void clickBoton(int fila, int columna) {
+        
+        System.out.println("fila: " + fila + " columna: " + columna);
+        // Método a completar!.
+        // En fila y columna se reciben las coordenas donde presionó el usuario, relativas al comienzo de la grilla
+        // fila 0 y columna 0 corresponden a la posición de arriba a la izquierda.
+        // Debe indicarse cómo responder al click de ese botón.
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlVistaResultados;
-    private javax.swing.JTable tblResultados;
+    private javax.swing.JPanel pnlMatrizBotones;
+    private javax.swing.JPanel pnlMatrizEquipos;
+    private javax.swing.JPanel pnlMatrizProblemas;
     // End of variables declaration//GEN-END:variables
 }

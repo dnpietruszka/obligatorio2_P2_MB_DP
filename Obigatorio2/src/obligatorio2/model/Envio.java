@@ -6,6 +6,7 @@
 package obligatorio2.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -66,7 +67,4 @@ public class Envio implements Serializable{
     public void setLenguaje(String lenguaje) {
         this.lenguaje = lenguaje;
     }
-    
-    
-
 }

@@ -90,6 +90,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         lblEstado = new javax.swing.JLabel();
         lblInformacionErrores = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ingreso Manual");
 
         jScrollPane1.setViewportView(lstProblemas);
@@ -284,7 +285,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         //Validamos si hay seleccionado un equipo y problema
-        
+        modeloResultados.removeAllElements();
         Object objetoProblema = lstProblemas.getSelectedValue();
         Object objetoEquipo = lstEquipos.getSelectedValue();
         if (objetoProblema != null && objetoEquipo != null){
@@ -349,6 +350,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
                     String lenguaje = (String)cbLenguaje.getSelectedItem();
                     Envio envio = new Envio(equipo, problema, r, tiempo, lenguaje);
                     sistema.agregarEnvio(envio);
+                    sistema.serializar();
                 } else {
                     JOptionPane.showMessageDialog(this, "El tiempo seleccionado no es correcto", "ATENCION", JOptionPane.WARNING_MESSAGE);
                 }

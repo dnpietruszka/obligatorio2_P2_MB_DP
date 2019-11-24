@@ -43,6 +43,38 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         this.numero = numero;
     }
     
+    public ArrayList<Envio> getEnviosEquipo(ArrayList<Envio> listaEnvios){
+        ArrayList<Envio> listaRetorno = new ArrayList<Envio>();
+        for (int i = 0; i < listaEnvios.size(); i++){
+            Equipo equipoListaEnvio = listaEnvios.get(i).getEquipo();
+            if(this.equals(equipoListaEnvio)){
+                Envio envio = listaEnvios.get(i);
+                listaRetorno.add(envio);
+            }
+        }
+        return listaRetorno;
+    }
+    
+    public boolean contieneEnvio(ArrayList<Envio> listaEnvios){
+        for (int i = 0; i < listaEnvios.size(); i++){
+            Equipo equipoListaEnvio = listaEnvios.get(i).getEquipo();
+            if(this.equals(equipoListaEnvio)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean contieneProblema(ArrayList<Envio> listaEnvios, Problema p){
+        for (int i = 0; i < listaEnvios.size(); i++){
+            Problema problemaListaEnvio = listaEnvios.get(i).getProblema();
+            if(problemaListaEnvio.equals(p)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     @Override
     public int compareTo(Equipo e) {
         return this.getNumero() - e.getNumero();
@@ -63,5 +95,10 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         }
         retorno+="]";
         return retorno;
+    }
+    
+    @Override
+    public boolean equals(Object e){
+        return this.getNombre().equals(((Equipo)e).getNombre());
     }
 }
