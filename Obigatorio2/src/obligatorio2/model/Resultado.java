@@ -14,16 +14,19 @@ import obligatorio2.utils.ArchivoLectura;
  */
 public class Resultado implements Serializable{
     
-    private String resultado;
+    private String lenguaje;
+    private int tiempo;
+    private boolean resultado;
+    private Problema problema;
 
-    public String getResultado() {
+    public boolean isResultado() {
         return resultado;
     }
 
-    public void setResultado(String resultado) {
+    public void setResultado(boolean resultado) {
         this.resultado = resultado;
     }
-    
+
     public String verificarResultado (String lineaEquipo, String lineaOficial){
         
         if(lineaEquipo.trim().equals(lineaOficial)){

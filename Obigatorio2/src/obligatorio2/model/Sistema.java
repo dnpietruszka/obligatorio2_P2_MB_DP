@@ -24,12 +24,14 @@ public class Sistema implements Serializable  {
     private ArrayList<Docente> listaDocentes;
     private ArrayList<Equipo> listaEquipos;
     private ArrayList<Problema> listaProblemas;
+    private ArrayList<Envio> listaEnvios;
     
     public Sistema(){
         listaEstudiantes = new ArrayList<Estudiante>();
         listaDocentes = new ArrayList<Docente>();
         listaEquipos = new ArrayList<Equipo>();
         listaProblemas = new ArrayList<Problema>();
+        listaEnvios = new ArrayList<Envio>();
     }
 
     public ArrayList<Estudiante> getListaEstudiantes() {
@@ -62,6 +64,14 @@ public class Sistema implements Serializable  {
     
     public void agregarProblema(Problema p) {
         this.listaProblemas.add(p);
+    }
+
+    public ArrayList<Envio> getListaEnvios() {
+        return listaEnvios;
+    }
+    
+    public void agregarEnvio(Envio e) {
+        this.listaEnvios.add(e);
     }
 
     public void serializar(){

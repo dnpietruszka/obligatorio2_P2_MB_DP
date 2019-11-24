@@ -18,7 +18,7 @@ public class Problema implements Serializable {
     private String link;
     private Docente docente;
     
-    public Problema(String titulo, String decripcion, String link, Docente d){
+    public Problema(String titulo, String descripcion, String link, Docente d){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.link = link;

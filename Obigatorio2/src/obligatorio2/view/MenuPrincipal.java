@@ -45,6 +45,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnProblema = new javax.swing.JMenu();
         mnAltaProblema = new javax.swing.JMenuItem();
         mnCargarSolucion = new javax.swing.JMenuItem();
+        mnResultados = new javax.swing.JMenu();
+        mnVisualizarResultados = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +106,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         menuPrincipal.add(mnProblema);
 
+        mnResultados.setText("Resultados");
+
+        mnVisualizarResultados.setText("Visualizar");
+        mnVisualizarResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnVisualizarResultadosActionPerformed(evt);
+            }
+        });
+        mnResultados.add(mnVisualizarResultados);
+
+        menuPrincipal.add(mnResultados);
+
         setJMenuBar(menuPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,15 +158,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
             AltaProblema altaProblema = new AltaProblema(sistema);
             altaProblema.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Deben existir al menos 1 docente en el sistema para poder registrar problemas", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe existir al menos 1 docente en el sistema para poder registrar problemas", "ATENCION", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_mnAltaProblemaActionPerformed
 
     private void mnCargarSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCargarSolucionActionPerformed
-        CargarSolucionEstudiante cargarSolucion = new CargarSolucionEstudiante(sistema);
-        cargarSolucion.setVisible(true);
+        if(sistema.getListaEquipos().size() > 0){
+            if(sistema.getListaProblemas().size() > 0){
+                CargarSolucionEstudiante cargarSolucion = new CargarSolucionEstudiante(sistema);
+                cargarSolucion.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe existir al menos 1 problema en el sistema para poder verificar ejercicios", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe existir al menos 1 equipo en el sistema para poder verificar ejercicios", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_mnCargarSolucionActionPerformed
+
+    private void mnVisualizarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVisualizarResultadosActionPerformed
+        VerResultados verResultados = new VerResultados(sistema);
+        verResultados.setVisible(true);
+    }//GEN-LAST:event_mnVisualizarResultadosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,5 +194,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnDocente;
     private javax.swing.JMenu mnEquipo;
     private javax.swing.JMenu mnProblema;
+    private javax.swing.JMenu mnResultados;
+    private javax.swing.JMenuItem mnVisualizarResultados;
     // End of variables declaration//GEN-END:variables
 }
