@@ -156,9 +156,9 @@ public class AltaProblema extends javax.swing.JFrame {
                     .addComponent(lblLink)
                     .addComponent(txtLink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDocente)
-                    .addComponent(cbDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDocente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlRegistroProblemaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
@@ -218,11 +218,21 @@ public class AltaProblema extends javax.swing.JFrame {
         String descripcion = txtDescripcion.getText();
         String link = txtLink.getText();
         Object o = cbDocente.getSelectedItem();
-        Problema p = new Problema(titulo, descripcion, link, (Docente)o);
-        modeloProblema.addElement(p);
-        sistema.agregarProblema(p);
-        sistema.serializar();
-        JOptionPane.showMessageDialog(this, "Problema ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        ArrayList<Problema> listaProblemas = sistema.getListaProblemas();
+        boolean noEsUnico=true;
+        for (Problema prob : listaProblemas){
+            if (prob.getTitulo().equalsIgnoreCase(titulo)){
+                JOptionPane.showMessageDialog(this, "El titulo del problema ya esta utilizado", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                noEsUnico=false;
+            }
+        }
+        if (noEsUnico){
+            Problema p = new Problema(titulo, descripcion, link, (Docente)o);
+            modeloProblema.addElement(p);
+            sistema.agregarProblema(p);
+            sistema.serializar();
+            JOptionPane.showMessageDialog(this, "Problema ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        }    
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     DefaultComboBoxModel modeloDocente = new DefaultComboBoxModel();

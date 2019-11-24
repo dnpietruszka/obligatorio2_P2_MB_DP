@@ -203,13 +203,41 @@ public class AltaDocente extends javax.swing.JFrame {
         String nombre = txtNombreDocente.getText();
         String cedula = txtCIDocente.getText();
         String mail = txtMailDocente.getText();
-        int anioIngreso = Integer.parseInt(txtAnioIngresoDocente.getText());
-        Docente d = new Docente(nombre, cedula, mail, anioIngreso);
-        sistema.agregarDocente(d);
-        sistema.serializar();
-        modeloDocente.addElement(d);
-        JOptionPane.showMessageDialog(this, "Docente ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
-        this.limpiarCampos();
+        int anioIngreso = 0;
+        
+        boolean correcto=true;
+        try{
+            anioIngreso = Integer.parseInt(txtAnioIngresoDocente.getText());
+        }
+            catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Año de ingreso no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                correcto = false;
+            }
+        if (anioIngreso < 0){
+            JOptionPane.showMessageDialog(this, "Año de ingreso debe ser positivo", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        
+        if (nombre.equals(" ") || nombre.equals("")){
+            JOptionPane.showMessageDialog(this, "Nombre de docente no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if ((!cedula.matches("[0-9]+") || cedula.length()!=8)){
+            JOptionPane.showMessageDialog(this, "Cedula de docente no valida", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if (!mail.contains("@")){
+            JOptionPane.showMessageDialog(this, "Email de docente no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if (correcto){
+            Docente d = new Docente(nombre, cedula, mail, anioIngreso);
+            sistema.agregarDocente(d);
+            sistema.serializar();
+            modeloDocente.addElement(d);
+            JOptionPane.showMessageDialog(this, "Docente ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            this.limpiarCampos();
+        }    
     }//GEN-LAST:event_btnEnviarDocenteActionPerformed
 
     private void btnLimpiarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarDocenteActionPerformed

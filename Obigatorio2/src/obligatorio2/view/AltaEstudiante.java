@@ -222,14 +222,44 @@ public class AltaEstudiante extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String cedula = txtCI.getText();
         String mail = txtMail.getText();
-        int numero = Integer.parseInt(txtNumero.getText());
-        int semestre = Integer.parseInt(txtSemestre.getText());
-        Estudiante e = new Estudiante(nombre, cedula, mail, numero, semestre);
-        sistema.agregarEstudiante(e);
-        sistema.serializar();
-        modeloEstudiante.addElement(e);
-        JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
-        this.limpiarCampos();
+        int numero = 0;
+        int semestre = 0;
+        boolean correcto = true;
+        try{
+            numero = Integer.parseInt(txtNumero.getText());
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "numero de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        try{
+           semestre = Integer.parseInt(txtSemestre.getText()); 
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El semestre no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if (nombre.equals(" ") || nombre.equals("")){
+            JOptionPane.showMessageDialog(this, "Nombre de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if ((!cedula.matches("[0-9]+") || cedula.length()!=8)){
+            JOptionPane.showMessageDialog(this, "Numero de cedula no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            correcto = false;
+        }
+        if (!mail.contains("@")){
+           JOptionPane.showMessageDialog(this, "Email de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+
+            correcto = false;
+        }
+        if (correcto){
+            Estudiante e = new Estudiante(nombre, cedula, mail, numero, semestre);
+            sistema.agregarEstudiante(e);
+            sistema.serializar();
+            modeloEstudiante.addElement(e);
+            JOptionPane.showMessageDialog(this, "Estudiante ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+            this.limpiarCampos();
+        }
     }//GEN-LAST:event_txtEnviarActionPerformed
 
     private void txtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarActionPerformed
