@@ -222,7 +222,7 @@ public class AltaProblema extends javax.swing.JFrame {
         boolean noEsUnico=true;
         for (Problema prob : listaProblemas){
             if (prob.getTitulo().equalsIgnoreCase(titulo)){
-                System.out.println("Problema ya ingresado");
+                JOptionPane.showMessageDialog(this, "El titulo del problema ya esta utilizado", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 noEsUnico=false;
             }
         }

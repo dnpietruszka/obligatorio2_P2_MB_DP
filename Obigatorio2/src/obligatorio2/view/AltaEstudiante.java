@@ -229,26 +229,27 @@ public class AltaEstudiante extends javax.swing.JFrame {
             numero = Integer.parseInt(txtNumero.getText());
         }
         catch (NumberFormatException e){
-            System.out.println("Debe ser un numero");
+            JOptionPane.showMessageDialog(this, "numero de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         try{
            semestre = Integer.parseInt(txtSemestre.getText()); 
         }
         catch (NumberFormatException e){
-            System.out.println("El semestre debe ser un numero");
+            JOptionPane.showMessageDialog(this, "El semestre no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if (nombre.equals(" ") || nombre.equals("")){
-            System.out.println("Nombre de estudiante no valido");
+            JOptionPane.showMessageDialog(this, "Nombre de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if ((!cedula.matches("[0-9]+") || cedula.length()!=8)){
-            System.out.println("Numero de cedula no valido");
+            JOptionPane.showMessageDialog(this, "Numero de cedula no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if (!mail.contains("@")){
-            System.out.println("Email de estudiante no valido");
+           JOptionPane.showMessageDialog(this, "Email de estudiante no es valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
+
             correcto = false;
         }
         if (correcto){

@@ -210,24 +210,24 @@ public class AltaDocente extends javax.swing.JFrame {
             anioIngreso = Integer.parseInt(txtAnioIngresoDocente.getText());
         }
             catch (NumberFormatException e){
-                System.out.println("Error, el año de ingreso debe ser un numero");
+                JOptionPane.showMessageDialog(this, "Año de ingreso no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 correcto = false;
             }
         if (anioIngreso < 0){
-            System.out.println("El año de ingreso debe ser positivo");
+            JOptionPane.showMessageDialog(this, "Año de ingreso debe ser positivo", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         
         if (nombre.equals(" ") || nombre.equals("")){
-            System.out.println("Nombre de docente no valido");
+            JOptionPane.showMessageDialog(this, "Nombre de docente no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if ((!cedula.matches("[0-9]+") || cedula.length()!=8)){
-            System.out.println("Numero de cedula no valido");
+            JOptionPane.showMessageDialog(this, "Cedula de docente no valida", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if (!mail.contains("@")){
-            System.out.println("Email de docente no valido");
+            JOptionPane.showMessageDialog(this, "Email de docente no valido", "INFO", JOptionPane.INFORMATION_MESSAGE);
             correcto = false;
         }
         if (correcto){
