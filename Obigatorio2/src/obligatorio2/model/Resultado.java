@@ -14,10 +14,9 @@ import obligatorio2.utils.ArchivoLectura;
  */
 public class Resultado implements Serializable{
     
-    private String lenguaje;
-    private int tiempo;
-    private boolean resultado;
-    private Problema problema;
+   
+    
+    private boolean resultado;   
 
     public boolean isResultado() {
         return resultado;
