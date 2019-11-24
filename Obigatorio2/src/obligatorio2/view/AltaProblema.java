@@ -218,11 +218,21 @@ public class AltaProblema extends javax.swing.JFrame {
         String descripcion = txtDescripcion.getText();
         String link = txtLink.getText();
         Object o = cbDocente.getSelectedItem();
-        Problema p = new Problema(titulo, descripcion, link, (Docente)o);
-        modeloProblema.addElement(p);
-        sistema.agregarProblema(p);
-        sistema.serializar();
-        JOptionPane.showMessageDialog(this, "Problema ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        ArrayList<Problema> listaProblemas = sistema.getListaProblemas();
+        boolean noEsUnico=true;
+        for (Problema prob : listaProblemas){
+            if (prob.getTitulo().equalsIgnoreCase(titulo)){
+                System.out.println("Problema ya ingresado");
+                noEsUnico=false;
+            }
+        }
+        if (noEsUnico){
+            Problema p = new Problema(titulo, descripcion, link, (Docente)o);
+            modeloProblema.addElement(p);
+            sistema.agregarProblema(p);
+            sistema.serializar();
+            JOptionPane.showMessageDialog(this, "Problema ingresado correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
+        }    
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     DefaultComboBoxModel modeloDocente = new DefaultComboBoxModel();
