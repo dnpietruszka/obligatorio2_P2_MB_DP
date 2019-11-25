@@ -310,6 +310,7 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
     
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         //Validamos si hay seleccionado un equipo y problema
+        lblInformacionErrores.setText("");
         modeloResultados.removeAllElements();
         Object objetoProblema = lstProblemas.getSelectedValue();
         Object objetoEquipo = lstEquipos.getSelectedValue();
