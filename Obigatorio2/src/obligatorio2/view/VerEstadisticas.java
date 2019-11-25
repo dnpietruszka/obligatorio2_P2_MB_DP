@@ -59,8 +59,9 @@ public class VerEstadisticas extends javax.swing.JFrame {
                         break;
                     case 2:
                         //Columna Tiempo 1era ok
-                        int tiempoPrimeraOK = Integer.MAX_VALUE;
+                        int tiempoPrimeraOK = 0;
                         boolean encontreCorrecta = false;
+                        
                         for(int k = 0; k < listaEnviosProblema.size() && !encontreCorrecta; k++){
                             if(listaEnviosProblema.get(k).getResultado().isResultado()){
                                 int tiempo = listaEnviosProblema.get(k).getTiempo();
