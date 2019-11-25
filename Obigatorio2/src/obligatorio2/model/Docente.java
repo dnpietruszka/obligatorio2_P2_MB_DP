@@ -28,6 +28,11 @@ public class Docente extends Persona implements Serializable {
     }
     
     @Override
+    public boolean equals(Object e){
+        return this.getCedula().equals(((Docente)e).getCedula());
+    }
+    
+    @Override
     public String toString(){
         return this.getNombre();
     }

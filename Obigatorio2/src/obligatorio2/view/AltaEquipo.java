@@ -80,9 +80,11 @@ public class AltaEquipo extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnCrearEquipo = new javax.swing.JButton();
         btnEliminarEstudianteLista = new javax.swing.JButton();
-        pnlEquipo = new javax.swing.JPanel();
+        lblInfoAgregarEstudiante = new javax.swing.JLabel();
+        lblInfoCrearEquipo = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstEquipos = new javax.swing.JList<>();
+        pnlEquipo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ingresar Equipo");
@@ -112,22 +114,40 @@ public class AltaEquipo extends javax.swing.JFrame {
             }
         });
 
+        lblInfoAgregarEstudiante.setText("Seleccione los estudiantes que desea agregar a equipo");
+
+        lblInfoCrearEquipo.setText("Oprima boton Crear para crear Equipo o eliminar para quitar de lista");
+
+        jScrollPane2.setViewportView(lstEquipos);
+
         javax.swing.GroupLayout pnlEstudiantesLayout = new javax.swing.GroupLayout(pnlEstudiantes);
         pnlEstudiantes.setLayout(pnlEstudiantesLayout);
         pnlEstudiantesLayout.setHorizontalGroup(
             pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEstudiantesLayout.createSequentialGroup()
-                .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAgregar)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, Short.MAX_VALUE)
-                .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEstudiantesLayout.createSequentialGroup()
-                        .addComponent(btnCrearEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminarEstudianteLista, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(lblInfoAgregarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlEstudiantesLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAgregar)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInfoCrearEquipo)
+                    .addGroup(pnlEstudiantesLayout.createSequentialGroup()
+                        .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlEstudiantesLayout.createSequentialGroup()
+                                .addComponent(btnCrearEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarEstudianteLista, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane2)))
+                .addContainerGap())
         );
         pnlEstudiantesLayout.setVerticalGroup(
             pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,33 +155,28 @@ public class AltaEquipo extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregar)
-                    .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCrearEquipo)
-                        .addComponent(btnEliminarEstudianteLista)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(btnCrearEquipo)
+                    .addComponent(btnEliminarEstudianteLista))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(pnlEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblInfoAgregarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblInfoCrearEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-
-        jScrollPane2.setViewportView(lstEquipos);
 
         javax.swing.GroupLayout pnlEquipoLayout = new javax.swing.GroupLayout(pnlEquipo);
         pnlEquipo.setLayout(pnlEquipoLayout);
         pnlEquipoLayout.setHorizontalGroup(
             pnlEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEquipoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 18, Short.MAX_VALUE)
         );
         pnlEquipoLayout.setVerticalGroup(
             pnlEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEquipoLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,7 +186,7 @@ public class AltaEquipo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(203, 203, 203)
                 .addComponent(pnlEquipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -182,31 +197,33 @@ public class AltaEquipo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        ArrayList<Equipo> listaEquipos = sistema.getListaEquipos();
         Object e = lstEstudiantes.getSelectedValue();
-        if(modeloEquipo.size() > 0){
-            boolean objetoExistente = false;
-            for (int i = 0; i < modeloEquipo.size(); i++){
-                Object o = modeloEquipo.get(i);
-                Estudiante eq = (Estudiante)o;
-                e = (Estudiante)e;
-                if(e.equals(eq)){
-                    objetoExistente = true;
+        Estudiante es = (Estudiante)e;
+        boolean integraEquipo = false;
+        for(int i = 0; i < listaEquipos.size(); i++){
+
+            ArrayList<Estudiante> listaEstudiantesEquipo = listaEquipos.get(i).getListaEstudiantes();
+            for(int j = 0; j < listaEstudiantesEquipo.size() && !integraEquipo; j ++){
+                Estudiante estudianteLista = listaEstudiantesEquipo.get(j);
+                if(estudianteLista.equals(es)){
+                    integraEquipo = true;
                 }
             }
-            if(!objetoExistente){
-                modeloEquipo.addElement(e);
-            }
-        } else {
-            modeloEquipo.addElement(e);
         }
-        
+        if(!integraEquipo){
+            modeloEquipo.addElement(e);
+        } else {
+            JOptionPane.showMessageDialog(this, "El estudiante seleccionado ya integra un equipo", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminarEstudianteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEstudianteListaActionPerformed
@@ -251,6 +268,8 @@ public class AltaEquipo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblInfoAgregarEstudiante;
+    private javax.swing.JLabel lblInfoCrearEquipo;
     private javax.swing.JList<String> lstEquipo;
     private javax.swing.JList<String> lstEquipos;
     private javax.swing.JList<String> lstEstudiantes;

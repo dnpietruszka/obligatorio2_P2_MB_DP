@@ -49,7 +49,7 @@ public class Estudiante extends Persona implements Serializable {
     
     @Override
     public boolean equals(Object e){
-        return this.getCedula().equals(((Estudiante)e).getCedula());
+        return (this.getCedula().equals(((Estudiante)e).getCedula()) || this.getNumero() == (((Estudiante)e).getNumero()));
     }
     
     @Override
