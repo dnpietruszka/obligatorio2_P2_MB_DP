@@ -48,6 +48,7 @@ public class CargarSolucionManual extends javax.swing.JFrame {
         lblResultados = new javax.swing.JLabel();
         btnEnviarSolucion = new javax.swing.JButton();
         fileCargaResultados = new javax.swing.JFileChooser();
+        txtTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,6 +69,9 @@ public class CargarSolucionManual extends javax.swing.JFrame {
             }
         });
 
+        txtTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTitulo1.setText("CARGA DE RESULTADOS");
+
         javax.swing.GroupLayout pnlCargaResultadosLayout = new javax.swing.GroupLayout(pnlCargaResultados);
         pnlCargaResultados.setLayout(pnlCargaResultadosLayout);
         pnlCargaResultadosLayout.setHorizontalGroup(
@@ -79,11 +83,17 @@ public class CargarSolucionManual extends javax.swing.JFrame {
                     .addComponent(btnEnviarSolucion)
                     .addComponent(fileCargaResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCargaResultadosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtTitulo1)
+                .addGap(236, 236, 236))
         );
         pnlCargaResultadosLayout.setVerticalGroup(
             pnlCargaResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCargaResultadosLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addContainerGap()
+                .addComponent(txtTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(lblResultados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fileCargaResultados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,5 +190,6 @@ public class CargarSolucionManual extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileCargaResultados;
     private javax.swing.JLabel lblResultados;
     private javax.swing.JPanel pnlCargaResultados;
+    private javax.swing.JLabel txtTitulo1;
     // End of variables declaration//GEN-END:variables
 }

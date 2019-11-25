@@ -104,6 +104,7 @@ public class VerEstadisticas extends javax.swing.JFrame {
         pnlEstadisticas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEstadisticas = new javax.swing.JTable();
+        txtTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -140,6 +141,11 @@ public class VerEstadisticas extends javax.swing.JFrame {
         getContentPane().add(pnlEstadisticas);
         pnlEstadisticas.setBounds(30, 40, 480, 340);
 
+        txtTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTitulo1.setText("ESTADISTICAS");
+        getContentPane().add(txtTitulo1);
+        txtTitulo1.setBounds(240, 10, 100, 17);
+
         setBounds(0, 0, 564, 426);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -148,5 +154,6 @@ public class VerEstadisticas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlEstadisticas;
     private javax.swing.JTable tblEstadisticas;
+    private javax.swing.JLabel txtTitulo1;
     // End of variables declaration//GEN-END:variables
 }

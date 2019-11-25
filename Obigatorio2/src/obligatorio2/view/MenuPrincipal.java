@@ -228,8 +228,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnVisualizarEstadisticasActionPerformed
 
     private void mnCargarSolucionManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCargarSolucionManualActionPerformed
-        CargarSolucionManual cargarSolucionManual = new CargarSolucionManual(sistema);
-        cargarSolucionManual.setVisible(true);
+
+        if(sistema.getListaEquipos().size() > 0){
+            if(sistema.getListaProblemas().size() > 0){
+                CargarSolucionManual cargarSolucionManual = new CargarSolucionManual(sistema);
+                cargarSolucionManual.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe existir al menos 1 problema en el sistema para poder cargar resultados", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe existir al menos 1 equipo en el sistema para poder cargar resultados", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_mnCargarSolucionManualActionPerformed
           
 
