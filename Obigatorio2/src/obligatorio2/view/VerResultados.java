@@ -175,7 +175,6 @@ public class VerResultados extends javax.swing.JFrame {
         pnlMatrizSumarizacion = new javax.swing.JPanel();
         pnlTotal = new javax.swing.JPanel();
         txtTotal = new javax.swing.JLabel();
-        txtTitulo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -208,9 +207,6 @@ public class VerResultados extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        txtTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtTitulo1.setText("CARGA DE RESULTADOS");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,11 +223,6 @@ public class VerResultados extends javax.swing.JFrame {
                     .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(107, 107, 107))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 439, Short.MAX_VALUE)
-                    .addComponent(txtTitulo1)
-                    .addGap(0, 439, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,11 +238,6 @@ public class VerResultados extends javax.swing.JFrame {
                         .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                         .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(67, 67, 67))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 254, Short.MAX_VALUE)
-                    .addComponent(txtTitulo1)
-                    .addGap(0, 254, Short.MAX_VALUE)))
         );
 
         setBounds(0, 0, 985, 534);
@@ -302,7 +288,6 @@ public class VerResultados extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMatrizProblemas;
     private javax.swing.JPanel pnlMatrizSumarizacion;
     private javax.swing.JPanel pnlTotal;
-    private javax.swing.JLabel txtTitulo1;
     private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ import obligatorio2.model.Sistema;
 import obligatorio2.utils.ArchivoGrabacion;
 import obligatorio2.utils.ArchivoLectura;
 import obligatorio2.utils.FechaUtils;
+import obligatorio2.utils.FileUtils;
 
 
 
@@ -48,7 +49,7 @@ public class CargarSolucionManual extends javax.swing.JFrame {
         lblResultados = new javax.swing.JLabel();
         btnEnviarSolucion = new javax.swing.JButton();
         fileCargaResultados = new javax.swing.JFileChooser();
-        txtTitulo1 = new javax.swing.JLabel();
+        txtTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,8 +70,8 @@ public class CargarSolucionManual extends javax.swing.JFrame {
             }
         });
 
-        txtTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtTitulo1.setText("CARGA DE RESULTADOS");
+        txtTitulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTitulo.setText("CARGA DE RESULTADOS");
 
         javax.swing.GroupLayout pnlCargaResultadosLayout = new javax.swing.GroupLayout(pnlCargaResultados);
         pnlCargaResultados.setLayout(pnlCargaResultadosLayout);
@@ -85,14 +86,14 @@ public class CargarSolucionManual extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCargaResultadosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtTitulo1)
+                .addComponent(txtTitulo)
                 .addGap(236, 236, 236))
         );
         pnlCargaResultadosLayout.setVerticalGroup(
             pnlCargaResultadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCargaResultadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(lblResultados)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -138,7 +139,8 @@ public class CargarSolucionManual extends javax.swing.JFrame {
             String fechaActual = FechaUtils.getFechaActual("yyy-MM-dd");
             String hora = FechaUtils.getFechaActual("hh");
             String minuto = FechaUtils.getFechaActual("mm");
-            ArchivoGrabacion archivoGrabacion = new ArchivoGrabacion("inconsistencias/carga_" + fechaActual + "_" + hora + "_" + minuto + ".txt");
+            String pathFile = "inconsistencias/carga_" + fechaActual + "_" + hora + "_" + minuto + ".txt";
+            ArchivoGrabacion archivoGrabacion = new ArchivoGrabacion(pathFile);
             int numeroLinea = 0;
             int cantidadLineasError = 0;
             while (cargaGlobal.hayMasLineas()){
@@ -174,8 +176,9 @@ public class CargarSolucionManual extends javax.swing.JFrame {
             cargaGlobal.cerrar();
             archivoGrabacion.cerrar();
             if(cantidadLineasError > 0){
-                JOptionPane.showMessageDialog(this, "Hay errores en la generacion de resultados, verificar archivo de inconsistencias", "INFO", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Hay errores en la generacion de resultados, verificar archivo de inconsistencias", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
+                FileUtils.deleteFile(pathFile);
                 JOptionPane.showMessageDialog(this, "Se han registrado los resultados correctamente", "INFO", JOptionPane.INFORMATION_MESSAGE);
             }
             
@@ -190,6 +193,6 @@ public class CargarSolucionManual extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileCargaResultados;
     private javax.swing.JLabel lblResultados;
     private javax.swing.JPanel pnlCargaResultados;
-    private javax.swing.JLabel txtTitulo1;
+    private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 }
