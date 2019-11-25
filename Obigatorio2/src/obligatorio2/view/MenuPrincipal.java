@@ -209,8 +209,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnCargarSolucionActionPerformed
 
     private void mnVisualizarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVisualizarResultadosActionPerformed
-        VerResultados verResultados = new VerResultados(sistema);
-        verResultados.setVisible(true);
+        if(sistema.getListaEquipos().size() > 0){
+            if(sistema.getListaProblemas().size() > 0){
+                VerResultados verResultados = new VerResultados(sistema);
+                verResultados.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe existir al menos 1 problema en el sistema para poder ver resultados", "ATENCION", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe existir al menos 1 equipo en el sistema para poder ver resultados", "ATENCION", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_mnVisualizarResultadosActionPerformed
 
     private void mnVisualizarEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVisualizarEstadisticasActionPerformed
