@@ -6,7 +6,6 @@
 package obligatorio2.model;
 
 import java.io.Serializable;
-import obligatorio2.utils.ArchivoLectura;
 
 /**
  *
@@ -14,16 +13,37 @@ import obligatorio2.utils.ArchivoLectura;
  */
 public class Resultado implements Serializable{
     
-   
+    private boolean resultado;
+    private int totalMinutos;
+    private int totalPuntos;
     
-    private boolean resultado;   
+    public Resultado(){
+        this.setTotalMinutos(0);
+        this.setTotalPuntos(0);
+    }
 
     public boolean isResultado() {
         return resultado;
     }
-
+    
     public void setResultado(boolean resultado) {
         this.resultado = resultado;
+    }
+
+    public int getTotalMinutos() {
+        return totalMinutos;
+    }
+
+    public void setTotalMinutos(int totalMinutos) {
+        this.totalMinutos = totalMinutos;
+    }
+
+    public int getTotalPuntos() {
+        return totalPuntos;
+    }
+
+    public void setTotalPuntos(int totalPuntos) {
+        this.totalPuntos = totalPuntos;
     }
 
     public String verificarResultado (String lineaEquipo, String lineaOficial){
@@ -37,5 +57,4 @@ public class Resultado implements Serializable{
         }
         return "incorrecto";
     }
-    
 }

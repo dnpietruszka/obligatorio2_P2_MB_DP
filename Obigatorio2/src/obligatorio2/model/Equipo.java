@@ -15,12 +15,13 @@ public class Equipo implements Comparable<Equipo>, Serializable {
     private String nombre;
     private ArrayList<Estudiante> listaEstudiantes;
     private int numero;
+    private Resultado resultado;
+    
     
     public Equipo(String nombre, int numero, ArrayList<Estudiante> listaEstudiantes){
         this.nombre = nombre;
         this.listaEstudiantes = listaEstudiantes;
         this.numero = numero;
-        
     }
     
     public String getNombre(){
@@ -74,7 +75,15 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         }
         return false;
     }
-    
+
+    public Resultado getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(Resultado resultado) {
+        this.resultado = resultado;
+    }
+
     @Override
     public int compareTo(Equipo e) {
         return this.getNumero() - e.getNumero();
