@@ -53,27 +53,28 @@ public class VerResultados extends javax.swing.JFrame {
         pnlMatrizBotones.setLayout(new GridLayout(cantFilas, cantColumnas));
         botones = new JButton[cantFilas][cantColumnas];
         for (int i = 0; i < cantFilas; i++) {
+            Resultado r = new Resultado();
+            
             Equipo equipo = sistema.getListaEquipos().get(i);
+            equipo.setResultado(r);
             for (int j = 0; j < cantColumnas; j++) {
                 Problema p = sistema.getListaProblemas().get(j);
                 JButton jButton = new JButton("");
                 jButton.setMargin(new Insets(5,5,5,5));
-                Resultado r = new Resultado();
+                
                 if (!equipo.contieneEnvio(listaEnvios)){
                     jButton.setBackground(java.awt.Color.white);
                 } else {
                     ArrayList<Envio> listaEnviosEquipo = equipo.getEnviosEquipo(listaEnvios);
                     if(equipo.contieneProblema(listaEnviosEquipo, p)){
-                        jButton.setText("Tengo problema");
                         ArrayList<Envio> listaEnviosProblema = p.getEnviosProblema(listaEnviosEquipo, p);
                         jButton.setText(String.valueOf(listaEnviosProblema.size()));
                         HashMap<String, Object> mapaResultado = p.getResultadoProblema(listaEnviosProblema);
                         int minutos = (int)mapaResultado.get("minutos");
                         boolean resultado = (boolean)mapaResultado.get("resultado");
-                        
                         if(resultado){
-                            r.setTotalMinutos(r.getTotalMinutos() + minutos);
-                            r.setTotalPuntos(r.getTotalPuntos() + 1);
+                            r.setTotalMinutos(equipo.getResultado().getTotalMinutos() + minutos);
+                            r.setTotalPuntos(equipo.getResultado().getTotalPuntos() + 1);
                             jButton.setBackground(java.awt.Color.green);
                             jButton.setText(minutos + "/" + String.valueOf(listaEnviosProblema.size()));
                         } else {
@@ -85,7 +86,7 @@ public class VerResultados extends javax.swing.JFrame {
                     }
                     
                 }
-                equipo.setResultado(r);
+                sistema.serializar();
                 jButton.addActionListener(new ListenerBoton(i, j));
                 pnlMatrizBotones.add(jButton);
                 botones[i][j] = jButton;
@@ -168,65 +169,77 @@ public class VerResultados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlMatrizEquipos = new javax.swing.JPanel();
         pnlMatrizBotones = new javax.swing.JPanel();
         pnlMatrizProblemas = new javax.swing.JPanel();
-        pnlMatrizEquipos = new javax.swing.JPanel();
         pnlMatrizSumarizacion = new javax.swing.JPanel();
         pnlTotal = new javax.swing.JPanel();
-        txtSumarizacion = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        pnlMatrizEquipos.setLayout(null);
 
         pnlMatrizBotones.setLayout(null);
 
         pnlMatrizProblemas.setLayout(null);
 
-        pnlMatrizEquipos.setLayout(null);
-
         pnlMatrizSumarizacion.setLayout(null);
 
         pnlTotal.setBackground(new java.awt.Color(204, 204, 255));
-        pnlTotal.setLayout(null);
 
-        txtSumarizacion.setText("TOTAL");
-        pnlTotal.add(txtSumarizacion);
-        txtSumarizacion.setBounds(10, 30, 50, 14);
+        txtTotal.setText("TOTAL");
+
+        javax.swing.GroupLayout pnlTotalLayout = new javax.swing.GroupLayout(pnlTotal);
+        pnlTotal.setLayout(pnlTotalLayout);
+        pnlTotalLayout.setHorizontalGroup(
+            pnlTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+        pnlTotalLayout.setVerticalGroup(
+            pnlTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTotalLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(txtTotal)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(50, 50, 50)
                 .addComponent(pnlMatrizEquipos, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(pnlTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(pnlTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizProblemas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlMatrizEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                    .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(65, 65, 65))
+                    .addComponent(pnlMatrizBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizSumarizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlMatrizEquipos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 792, 516);
+        setBounds(0, 0, 988, 562);
     }// </editor-fold>//GEN-END:initComponents
 
     
@@ -274,6 +287,6 @@ public class VerResultados extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMatrizProblemas;
     private javax.swing.JPanel pnlMatrizSumarizacion;
     private javax.swing.JPanel pnlTotal;
-    private javax.swing.JLabel txtSumarizacion;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 }

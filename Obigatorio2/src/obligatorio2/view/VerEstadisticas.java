@@ -5,10 +5,16 @@
  */
 package obligatorio2.view;
 
+import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import obligatorio2.model.Envio;
+import obligatorio2.model.Equipo;
+import obligatorio2.model.Problema;
 import obligatorio2.model.Sistema;
+
 
 /**
  *
@@ -17,22 +23,75 @@ import obligatorio2.model.Sistema;
 public class VerEstadisticas extends javax.swing.JFrame {
 
     /**
-     * Creates new form Estadisticas
+     * Creates new form VerEstadisticas
      */
-    DefaultTableModel modelo = new DefaultTableModel();
-    JTable tabla = new JTable (modelo);
+    
+    // Table 
+    JTable j; 
     private Sistema sistema;
-    
-    
+
     public VerEstadisticas(Sistema s) {
-        initComponents();
         sistema = s;
+        this.setTitle("Estadisticas"); 
+        // Data to be displayed in the JTable 
+        ArrayList<Problema> listaProblemas = sistema.getListaProblemas();
+        ArrayList<Envio> listaEnvios = sistema.getListaEnvios();
+        int cantidadProblemas = listaProblemas.size();
+        String[][] datos = new String[cantidadProblemas][3];
+        for(int i = 0; i < cantidadProblemas; i++){
+            Problema p = listaProblemas.get(i);
+            ArrayList<Envio> listaEnviosProblema = p.getEnviosProblema(listaEnvios, p);
+            for (int j = 0; j < 3; j++){
+                switch(j){
+                    case 0:
+                        //Columna Ejercicio
+                        datos[i][j] = p.getTitulo();
+                        break;
+                    case 1:
+                        //Columna CantidadOK
+                        int contadorOK = 0;
+                        for(int k = 0; k < listaEnviosProblema.size(); k++){
+                            if(listaEnviosProblema.get(k).getResultado().isResultado()){
+                                contadorOK++;
+                            }
+                        }
+                        datos[i][j] = String.valueOf(contadorOK);
+                        break;
+                    case 2:
+                        //Columna Tiempo 1era ok
+                        int tiempoPrimeraOK = Integer.MAX_VALUE;
+                        boolean encontreCorrecta = false;
+                        for(int k = 0; k < listaEnviosProblema.size() && !encontreCorrecta; k++){
+                            if(listaEnviosProblema.get(k).getResultado().isResultado()){
+                                int tiempo = listaEnviosProblema.get(k).getTiempo();
+                                tiempoPrimeraOK = tiempo;
+                                encontreCorrecta = true;
+                            }
+                        }
+                        datos[i][j] = String.valueOf(tiempoPrimeraOK);;
+                        break;
+                }
+                       
+                
+                
+            }
+        }
+        // Column Names 
+        String[] columnNames = { "Ejercicio", "Cantidad OK", "Tiempo 1era ok" }; 
+  
+        // Initializing the JTable 
+        j = new JTable(datos, columnNames); 
+        j.setBounds(30, 40, 200, 300); 
+        // adding it to JScrollPane 
+        JScrollPane sp = new JScrollPane(j); 
+        this.add(sp); 
+        // Frame Size 
+        this.setSize(500, 200); 
+        // Frame Visible = true 
+        this.setVisible(true); 
     }
 
-    private VerEstadisticas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,78 +101,52 @@ public class VerEstadisticas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Estadisticas = new javax.swing.JTable();
+        pnlEstadisticas = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblEstadisticas = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jPanel1.setBackground(new java.awt.Color(200, 197, 194));
-
-        Estadisticas.setAutoCreateRowSorter(true);
-        Estadisticas.setModel(new javax.swing.table.DefaultTableModel(
+        tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Flores", "0", "0"},
-                {"Colores", "0", "0"},
-                {"Paredes", "0", "0"},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Ejercicio", "Cantidad Ok", "Tiempo 1era Ok"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
+        ));
+        jScrollPane2.setViewportView(tblEstadisticas);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        Estadisticas.setMinimumSize(new java.awt.Dimension(500, 600));
-        Estadisticas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EstadisticasMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Estadisticas);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+        javax.swing.GroupLayout pnlEstadisticasLayout = new javax.swing.GroupLayout(pnlEstadisticas);
+        pnlEstadisticas.setLayout(pnlEstadisticasLayout);
+        pnlEstadisticasLayout.setHorizontalGroup(
+            pnlEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEstadisticasLayout.createSequentialGroup()
+                .addGap(0, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnlEstadisticasLayout.setVerticalGroup(
+            pnlEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEstadisticasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(30, 40, 470, 340);
+        getContentPane().add(pnlEstadisticas);
+        pnlEstadisticas.setBounds(30, 40, 480, 340);
 
-        setBounds(0, 0, 530, 432);
+        setBounds(0, 0, 564, 426);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void EstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EstadisticasMouseClicked
-        
-    }//GEN-LAST:event_EstadisticasMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Estadisticas;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel pnlEstadisticas;
+    private javax.swing.JTable tblEstadisticas;
     // End of variables declaration//GEN-END:variables
 }

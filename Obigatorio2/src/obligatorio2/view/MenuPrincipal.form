@@ -85,6 +85,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCargarSolucionActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mnCargarSolucionManual">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+NUMPAD6"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cargar Solucion Manual"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnCargarSolucionManualActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnResultados">
@@ -95,7 +106,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnVisualizarResultados">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+Alt+NUMPAD6"/>
+                  <KeyStroke key="Ctrl+Alt+NUMPAD7"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Visualizar"/>
               </Properties>
@@ -112,6 +123,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnVisualizarEstadisticas">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+NUMPAD8"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Visualizar"/>
               </Properties>
               <Events>

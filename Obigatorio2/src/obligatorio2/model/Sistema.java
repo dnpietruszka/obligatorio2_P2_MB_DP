@@ -73,6 +73,26 @@ public class Sistema implements Serializable  {
     public void agregarEnvio(Envio e) {
         this.listaEnvios.add(e);
     }
+    
+    public Equipo buscarEquipoPorNombre(String nombreEquipo){
+        for(int i = 0; i < listaEquipos.size(); i ++){
+            Equipo e = listaEquipos.get(i);
+            if(e.getNombre().equals(nombreEquipo)){
+                return e;
+            }
+        }
+        return null;
+    }
+    
+    public Problema buscarProblemaPorNombre(String nombreProblema){
+        for(int i = 0; i < listaProblemas.size(); i ++){
+            Problema p = listaProblemas.get(i);
+            if(p.getTitulo().equals(nombreProblema)){
+                return p;
+            }
+        }
+        return null;
+    }
 
     public void serializar(){
         FileOutputStream fileOut;

@@ -5,9 +5,13 @@
  */
 package obligatorio2.view;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -35,10 +39,12 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         sistema = s;
         this.cargarProblemas();
         this.cargarEquipos();
+        lstResultado.setCellRenderer( new CeldasResultados() );
         lstResultado.setModel(modeloResultados);
         FileFilter filter = new FileNameExtensionFilter("TXT Files","txt");
         flSelect.setFileFilter(filter);
         flSelect.addChoosableFileFilter(filter);
+        
     }
     
     private void cargarProblemas(){
@@ -283,6 +289,25 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_flSelectActionPerformed
 
+    
+    private static class CeldasResultados extends DefaultListCellRenderer {
+        public Component getListCellRendererComponent( JList list, Object value, int index, boolean isSelected, boolean cellHasFocus ) {
+            Component c = super.getListCellRendererComponent( list, value, index, isSelected, cellHasFocus );
+            String valorCelda = (String)value;
+            if(valorCelda.contains("error de formato")){
+                c.setBackground(Color.yellow);
+            } else {
+                if(valorCelda.contains("error de datos")){
+                    c.setBackground(Color.red);
+                } else {
+                    c.setBackground(Color.green);
+                }
+            }
+
+            return c;
+        }
+    }
+    
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         //Validamos si hay seleccionado un equipo y problema
         modeloResultados.removeAllElements();
@@ -361,10 +386,6 @@ public class CargarSolucionEstudiante extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No se ha seleccionado un equipo y/o problema", "ATENCION", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-        
-        
     }//GEN-LAST:event_btnVerificarActionPerformed
     DefaultListModel modeloEquipos = new DefaultListModel();
     DefaultListModel modeloProblemas = new DefaultListModel();

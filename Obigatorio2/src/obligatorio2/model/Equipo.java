@@ -75,6 +75,7 @@ public class Equipo implements Comparable<Equipo>, Serializable {
         }
         return false;
     }
+    
 
     public Resultado getResultado() {
         return resultado;

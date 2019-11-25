@@ -45,6 +45,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         mnProblema = new javax.swing.JMenu();
         mnAltaProblema = new javax.swing.JMenuItem();
         mnCargarSolucion = new javax.swing.JMenuItem();
+        mnCargarSolucionManual = new javax.swing.JMenuItem();
         mnResultados = new javax.swing.JMenu();
         mnVisualizarResultados = new javax.swing.JMenuItem();
         mnEstadisticas = new javax.swing.JMenu();
@@ -111,11 +112,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         mnProblema.add(mnCargarSolucion);
 
+        mnCargarSolucionManual.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD6, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        mnCargarSolucionManual.setText("Cargar Solucion Manual");
+        mnCargarSolucionManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCargarSolucionManualActionPerformed(evt);
+            }
+        });
+        mnProblema.add(mnCargarSolucionManual);
+
         menuPrincipal.add(mnProblema);
 
         mnResultados.setText("Resultados");
 
-        mnVisualizarResultados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD6, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        mnVisualizarResultados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD7, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         mnVisualizarResultados.setText("Visualizar");
         mnVisualizarResultados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +138,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         mnEstadisticas.setText("Estadisticas");
 
+        mnVisualizarEstadisticas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD8, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         mnVisualizarEstadisticas.setText("Visualizar");
         mnVisualizarEstadisticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +217,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         VerEstadisticas verEstadisticas = new VerEstadisticas(sistema);
         verEstadisticas.setVisible(true);
     }//GEN-LAST:event_mnVisualizarEstadisticasActionPerformed
+
+    private void mnCargarSolucionManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCargarSolucionManualActionPerformed
+        CargarSolucionManual cargarSolucionManual = new CargarSolucionManual(sistema);
+        cargarSolucionManual.setVisible(true);
+    }//GEN-LAST:event_mnCargarSolucionManualActionPerformed
           
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -216,6 +232,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mnAltaEstudiante;
     private javax.swing.JMenuItem mnAltaProblema;
     private javax.swing.JMenuItem mnCargarSolucion;
+    private javax.swing.JMenuItem mnCargarSolucionManual;
     private javax.swing.JMenu mnDocente;
     private javax.swing.JMenu mnEquipo;
     private javax.swing.JMenu mnEstadisticas;
